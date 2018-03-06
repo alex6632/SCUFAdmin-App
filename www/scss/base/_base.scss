@@ -1,0 +1,9 @@
+// _base.scss
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  @include font-size(16px);
+}

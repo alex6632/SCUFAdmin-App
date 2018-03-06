@@ -1,0 +1,20 @@
+// _c-title.scss
+
+.title {
+  font-family: font('primary');
+  margin: 15px 0;
+
+  .card & {
+    margin-top: 0;
+  }
+
+  &--primary { // h1 and primary level titles
+    @include font-size(30px);
+    color: color('primary');
+  }
+
+  &--secondary { // h2 and secondary level titles
+    @include font-size(20px);
+    color: color('secondary');
+  }
+}

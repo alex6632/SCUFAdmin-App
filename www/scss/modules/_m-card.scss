@@ -1,0 +1,22 @@
+// _m-card.scss
+
+.card {
+  max-width: 300px;
+  border: 1px solid color('gray');
+  border-radius: 3px;
+
+  &__header {
+    img {
+      display: block;
+    }
+  }
+
+  &__content {
+    padding: 15px;
+  }
+
+  &__footer {
+    padding: 15px;
+    border-top: 1px solid color('gray');
+  }
+}

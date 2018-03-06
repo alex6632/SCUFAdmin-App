@@ -1,0 +1,61 @@
+// _m-main-navigation.scss
+
+.main-navigation {
+
+  &__trigger {
+
+    @include respond-to('large') {
+      display: none;
+    }
+  }
+
+  &__list {
+    display: none;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include respond-to('large') {
+      display: block;
+    }
+
+    .main-navigation.is-open & {
+      display: block;
+    }
+  }
+
+  &__sublist {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include respond-to('large') {
+      position: absolute;
+      display: none;
+    }
+
+    .main-navigation__item.is-open & {
+      display: block;
+    }
+
+    .main-navigation__item:hover & {
+      @include respond-to('large') {
+        display: block;
+      }
+    }
+  }
+
+  &__item {
+    @include respond-to('large') {
+      display: inline-block;
+    }
+  }
+
+  &__subitem {
+
+  }
+
+  &__link {
+    display: inline-block;
+  }
+}

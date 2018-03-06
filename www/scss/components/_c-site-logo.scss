@@ -1,0 +1,14 @@
+// _c-site-logo.scss
+
+.site-logo {
+  &__link {
+    .site-header & {
+      color: color('gray');
+    }
+
+    .site-footer & {
+      color: color('gray', 'invert');
+      background: color('gray');
+    }
+  }
+}

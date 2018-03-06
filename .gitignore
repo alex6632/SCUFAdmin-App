@@ -4,6 +4,6 @@
 ### /main ###
 
 ### inte ###
-./node_modules/
-./www/dist/
+/node_modules/
+/www/dist/
 ### /inte ###
