@@ -1,0 +1,9 @@
+### main ###
+.idea/
+.DS_store
+### /main ###
+
+### inte ###
+./node_modules/
+./www/dist/
+### /inte ###
