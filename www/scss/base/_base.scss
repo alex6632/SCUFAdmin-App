@@ -6,4 +6,24 @@ html {
 
 body {
   @include font-size(16px);
+  font-family: font('primary');
+}
+
+.routing {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  @include transition();
+
+  &.hide,
+  &.show {
+    @include transition();
+  }
+  &.hide {
+    opacity: 0;
+  }
+  &.show {
+    opacity: 1;
+  }
 }

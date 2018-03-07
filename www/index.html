@@ -10,22 +10,61 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
         <meta name="format-detection" content="telephone=no">
         <meta name="msapplication-tap-highlight" content="no">
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
         <link rel="stylesheet" type="text/css" href="dist/css/app.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Rajdhani:300,400,500,700" rel="stylesheet">
         <title>SCUF Admin</title>
     </head>
     <body>
-        <div class="app">
-            <h1>Apache Cordova</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
+        <!-- Page login -->
+        <!--<div class="login">-->
+
+        <!--</div>-->
+        <!-- /Page login -->
+
+        <!-- Page planning -->
+        <div class="routing show" id="planning">planning</div>
+        <!-- /Page planning -->
+
+        <!-- Page validation -->
+        <div class="routing" id="validation">validation</div>
+        <!-- /Page validation -->
+
+        <!-- Page actions -->
+        <div class="routing" id="actions">actions</div>
+        <!-- /Page actions -->
+
+        <!-- Page profil -->
+        <div class="routing" id="profile">profil</div>
+        <!-- /Page profil -->
+
+        <div class="tab-bar">
+            <div class="tab-bar__item planning current" data-routing="planning">
+                <div class="icon icon-calendar"></div>
+                <div class="tab-bar__item__text">Planning</div>
+            </div>
+            <div class="tab-bar__item validation" data-routing="validation">
+                <div class="icon icon-list"></div>
+                <div class="tab-bar__item__text">Validations</div>
+            </div>
+            <div class="tab-bar__item actions" data-routing="actions">
+                <div class="icon icon-flash"></div>
+                <div class="tab-bar__item__text">Actions</div>
+            </div>
+            <div class="tab-bar__item profile" data-routing="profile">
+                <div class="icon icon-profile"></div>
+                <div class="tab-bar__item__text">Profil</div>
             </div>
         </div>
-        <script type="text/javascript" src="cordova.js"></script>
+
+        <!--<script type="text/javascript" src="cordova.js"></script>-->
+        <script
+          src="https://code.jquery.com/jquery-3.3.1.min.js"
+          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+          crossorigin="anonymous"></script>
         <script type="text/javascript" src="dist/js/app.js"></script>
     </body>
 </html>

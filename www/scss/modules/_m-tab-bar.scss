@@ -1,0 +1,39 @@
+// _m-tab-bar.scss
+
+.tab-bar {
+  position: fixed;
+  width: 100%;
+  height: 40px;
+  bottom: 0;
+  background-color: color('secondary');
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    width: 25%;
+    text-align: center;
+
+    .icon {
+      font-size: 20px;
+      color: color('gray', 'base');
+      margin-top: 4px;
+      @include transition();
+    }
+
+    &__text {
+      font-family: font('secondary');
+      font-size: 11px;
+      color: color('gray', 'base');
+      margin-top: 2px;
+      @include transition();
+    }
+
+    &.current {
+      .icon,
+      .tab-bar__item__text {
+        color: color('foreground', 'invert');
+        @include transition();
+      }
+    }
+  }
+}

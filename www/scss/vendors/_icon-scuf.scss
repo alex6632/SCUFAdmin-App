@@ -1,0 +1,99 @@
+$icomoon-font-path: "fonts" !default;
+
+$icon-calendar: \e900;
+$icon-lock: \e901;
+$icon-close: \e902;
+$icon-flash: \e903;
+$icon-list: \e904;
+$icon-logout: \e905;
+$icon-magnify: \e906;
+$icon-notification: \e907;
+$icon-profile: \e908;
+$icon-right-arrow: \e909;
+$icon-valid: \e90a;
+
+@font-face {
+  font-family: 'icon-scuf';
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?kevlpm');
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?kevlpm#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/icon-scuf.ttf?kevlpm') format('truetype'),
+  url('#{$icomoon-font-path}/icon-scuf.woff?kevlpm') format('woff'),
+  url('#{$icomoon-font-path}/icon-scuf.svg?kevlpm#icon-scuf') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icon-scuf' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@function unicode($str) {
+  @return unquote("\"") + $str + unquote("\"");
+}
+
+.icon-calendar {
+  &:before {
+    content: unicode($icon-calendar);
+  }
+}
+.icon-lock {
+  &:before {
+    content: unicode($icon-lock);
+  }
+}
+.icon-close {
+  &:before {
+    content: unicode($icon-close);
+  }
+}
+.icon-flash {
+  &:before {
+    content: unicode($icon-flash);
+  }
+}
+.icon-list {
+  &:before {
+    content: unicode($icon-list);
+  }
+}
+.icon-logout {
+  &:before {
+    content: unicode($icon-logout);
+  }
+}
+.icon-magnify {
+  &:before {
+    content: unicode($icon-magnify);
+  }
+}
+.icon-notification {
+  &:before {
+    content: unicode($icon-notification);
+  }
+}
+.icon-profile {
+  &:before {
+    content: unicode($icon-profile);
+  }
+}
+.icon-right-arrow {
+  &:before {
+    content: unicode($icon-right-arrow);
+  }
+}
+.icon-valid {
+  &:before {
+    content: unicode($icon-valid);
+  }
+}

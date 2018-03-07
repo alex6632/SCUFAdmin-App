@@ -8,7 +8,7 @@ $grid-gutter-width: 40px; // Overwrite grid ( gutters are / 2 visually )
 
 $font-size-base: 14px; // required by rem() mixins
 $transition-duration: 500ms; // required by transition() mixins
-$icomoon-font-path: '../fonts/ao-icon-agenceo';
+$icomoon-font-path: '../../fonts/icon-scuf';
 
 //-------------------------------------------------------------------//
 
@@ -20,39 +20,33 @@ $icomoon-font-path: '../fonts/ao-icon-agenceo';
 $color-key: 'base' !default;
 $colors: (
   'primary': (
-    'base': #000000, // To defined
-    'invert': #000000 // To defined
+    'base': #f3e35b,
+    'invert': #1e1e1e
   ),
   'secondary': (
-    'base': #000000, // To defined
-    'invert': #FFFFFF // To defined
+    'base': #1e1e1e,
+    'invert': #fff
   ),
   'foreground':(
-    'base': #000000, // Black
-    'invert': #FFFFFF // White
+    'base': #1e1e1e,
+    'invert': #fff
   ),
   'background': (
-    'base': #FFFFFF, // White
-    'invert': #000000 // Black
+    'base': #fff,
+    'invert': #1e1e1e
   ),
   'gray': (
-    'base': #7e7e7e, // To defined
-    'invert': #FFFFFF // To defined
+    'base': #949494,
+    'light': #b0b0b0,
+    'super-light': #d8d8d8,
+    'invert': #fff,
   ),
-  'social': (
-    'base': #000, // Unused but required
-    'dm': #00AAFf, // Dailymotion
-    'fb': #3B5998, // Facebook
-    'gp': #DB4437, // Google+
-    'ig': #b900b4, // Instagram
-    'li': #0077B5, // LinkedIn
-    'pi': #BD081C, // Pinterest
-    'sc': #FFFC00, // SnapChat
-    'tw': #1DA1F2, // Twitter
-    'vi': #1ab7ea, // Vimeo
-    'wa': #25D366, // WhatsApp
-    'yt': #CD201F, // YouTube
-    'invert': #FFF // Unused but required
+  'validation': (
+    'base': #fff,
+    'ok': #7ec730, // OK
+    'echec': #ff0000, // ECHEC
+    'partiel': #2f67f5, // PARTIEL
+    'invert': #fff
   )
 );
 
@@ -64,14 +58,13 @@ $colors: (
 $font-key: 'base' !default;
 $fonts: (
   'primary': (
-    'base': ('Lato', sans-serif)
+    'base': ('Open Sans', sans-serif)
   ),
   'secondary': (
-    'base': ('Open Sans', sans-serif),
-    'alt': ('Roboto', sans-serif),
+    'base': ('Rajdhani', sans-serif),
   ),
   'icon': (
-    'base':('ao-icon-agenceo')
+    'base':('icon-scuf')
   )
 );
 
