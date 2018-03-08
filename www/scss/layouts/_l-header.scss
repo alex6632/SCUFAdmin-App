@@ -1,5 +1,44 @@
 // _l-header.scss
 
 .header {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  background-color: color('background', 'invert');
+  text-align: center;
 
+  .icon {
+    position: absolute;
+    color: color('background');
+    top: 6px;
+    font-size: 18px;
+
+    &.icon-magnify {
+      left:  10px;
+    }
+    &.icon-notification {
+      right: 10px;
+
+      &.push {
+        &::after {
+          display: block;
+          content: "";
+          position: absolute;
+          width: 9px;
+          height: 9px;
+          background-color: color('validation', 'no');
+          border-radius: 50%;
+          top: -1px; right: -2px;
+          z-index: 2;
+        }
+      }
+    }
+  }
+
+  .title {
+    font-size: 14px;
+    font-weight: 700;
+    color: color('foreground', 'invert');
+    margin: 0;
+  }
 }

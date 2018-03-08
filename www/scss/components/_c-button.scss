@@ -1,24 +1,20 @@
 // _c-button.scss
 
-.btn {
-  @extend button;
-  display: inline-block;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 1px 6px;
+.button {
+  display: block;
+  font-family: font('primary');
+  font-size: 15px;
+  font-weight: 700;
+  padding: 10px 0;
+  width: 100%;
   text-align: center;
-  align-items: center;
   text-decoration: none;
-  color: color('gray', 'invert');
+  text-transform: uppercase;
+  color: color('foreground');
   background: color('primary');
   border: 0;
   appearance: none !important;
   @include transition();
-
-  &:focus,
-  &:hover {
-    background: color('gray');
-  }
 }
 
 /// Create themed btn version based on $colors variable map

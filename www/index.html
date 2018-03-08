@@ -20,9 +20,34 @@
     </head>
     <body>
         <!-- Page login -->
-        <!--<div class="login">-->
+        <div class="login">
+            <div class="login__top" id="jsShowConnectForm">
+                <div class="login__top__inner">
+                    <div class="login__head">
+                        <div class="icon icon-lock"></div>
+                        <div class="login__head__title">Connexion</div>
+                    </div>
 
-        <!--</div>-->
+                    <div class="login__info-touch">Toucher pour vous connecter</div>
+
+                    <form action="" class="login__form">
+                        <div class="login__form__block">
+                            <label for="login-email" class="login__form__label">Email</label>
+                            <input type="text" class="login__form__input" id="login-email"/>
+                        </div>
+                        <div class="login__form__block">
+                            <label for="login-pwd" class="login__form__label">Mot de passe</label>
+                            <input type="password" class="login__form__input" id="login-pwd"/>
+                        </div>
+                        <button type="submit" class="button">Se connecter</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="logo">
+                <img src="images/logo.jpg" alt="">
+            </div>
+        </div>
         <!-- /Page login -->
 
         <!-- Page planning -->
@@ -38,11 +63,18 @@
         <!-- /Page actions -->
 
         <!-- Page profil -->
-        <div class="routing" id="profile">profil</div>
+        <div class="routing show" id="profile">
+            <header class="header">
+                <span class="icon icon-magnify" id="jsGoSearch"></span>
+                <span class="icon icon-notification push" id="jsGoNotifications"></span>
+                <h1 class="title">Votre profil</h1>
+            </header>
+        </div>
         <!-- /Page profil -->
 
+
         <div class="tab-bar">
-            <div class="tab-bar__item planning current" data-routing="planning">
+            <div class="tab-bar__item planning" data-routing="planning">
                 <div class="icon icon-calendar"></div>
                 <div class="tab-bar__item__text">Planning</div>
             </div>
@@ -54,7 +86,7 @@
                 <div class="icon icon-flash"></div>
                 <div class="tab-bar__item__text">Actions</div>
             </div>
-            <div class="tab-bar__item profile" data-routing="profile">
+            <div class="tab-bar__item profile current" data-routing="profile">
                 <div class="icon icon-profile"></div>
                 <div class="tab-bar__item__text">Profil</div>
             </div>
