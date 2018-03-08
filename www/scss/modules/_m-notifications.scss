@@ -1,0 +1,19 @@
+// _m-notifications.scss
+
+.notification {
+  position: absolute;
+  top: 30px; left: 0;
+  background-color: color('background');
+  width: 100%;
+  height: calc(100% - 70px);
+  z-index: 5;
+
+  &__wait {
+    width: 100%;
+    background-color: color('gray');
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 15px;
+  }
+}
