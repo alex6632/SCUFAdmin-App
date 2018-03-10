@@ -10,10 +10,44 @@
 
   &__wait {
     width: 100%;
-    background-color: color('gray');
+    background-color: color('gray', 'super-light');
     text-align: center;
     text-transform: uppercase;
-    font-weight: 500;
-    font-size: 15px;
+    font-weight: 700;
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+  }
+
+  &__author {
+    font-weight: 700;
+  }
+
+  &__justification {
+    border: solid 1px color('gray');
+    border-radius: 5px;
+    color: color('gray', 'light');
+    font-style: italic;
+    font-weight: 300;
+    line-height: 14px;
+    padding: 4px 6px;
+    margin-top: 5px;
+  }
+
+  &__list {
+    padding: 0;
+    margin: 0;
+
+    &__item {
+      list-style: none;
+      padding: 20px;
+      border-bottom: solid 1px color('gray', 'light');
+      @include transition();
+
+      &.swipe {
+        transform: translateX(-120px);
+        @include transition();
+      }
+    }
   }
 }
