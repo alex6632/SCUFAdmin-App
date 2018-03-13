@@ -6,15 +6,114 @@
   line-height: 30px;
   background-color: color('background', 'invert');
   text-align: center;
+  z-index: 2;
+
+  &__lvl2 {
+    position: absolute;
+    width: 100%;
+    top: 30px;
+    height: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    color: color('foreground', 'invert');
+    background-color: color('background', 'invert');
+    text-transform: uppercase;
+    margin: 0;
+    z-index: -1;
+
+    #actions & {
+      transform: translateY(-200%);
+      transition: all 400ms ease;
+
+      &.show {
+        transform: translateY(0);
+        transition: all 200ms ease;
+      }
+    }
+
+    #validation & {
+      height: auto;
+
+      &__inner {
+        display: block;
+        line-height: 12px;
+        padding: 5px 0 10px 0;
+
+        strong {
+          display: block;
+          margin: 10px 0 5px 0;
+        }
+
+        &::before,
+        &::after {
+          @include center-v(absolute);
+          font-family: font('icon');
+          font-size: 14px;
+          color: color('background');
+        }
+        &::before {
+          content: $icon-left-arrow;
+          left: 10px;
+        }
+        &::after {
+          content: $icon-right-arrow;
+          right: 10px;
+        }
+      }
+    }
+
+    &::before {
+      display: block;
+      content: "";
+      width: 50px;
+      height: 1px;
+      margin: auto;
+      background-color: color('background');
+    }
+  }
+
+  &__link {
+    opacity: 0;
+    position: absolute;
+    color: color('primary');
+    top: 0; left:  30px;
+    font-size: 13px;
+    @include transition();
+    z-index: 2;
+
+    &.show {
+      left:  10px;
+      opacity: 1;
+      @include transition();
+    }
+
+    &::before {
+      display: inline-block;
+      font-family: font('icon');
+      content: $icon-right-arrow;
+      color: color('primary');
+      font-size: 13px;
+      transform: rotate(-180deg);
+      margin-right: 2px;
+    }
+  }
 
   .icon {
     position: absolute;
     color: color('background');
     top: 6px;
     font-size: 18px;
+    z-index: 2;
 
     &.icon-magnify {
       left:  10px;
+      @include transition();
+
+      &.hide {
+        left:  -20px;
+        opacity: 0;
+        @include transition();
+      }
     }
     &.icon-notification {
       right: 10px;
@@ -36,9 +135,13 @@
   }
 
   .title {
+    position: relative;
     font-size: 14px;
     font-weight: 700;
     color: color('foreground', 'invert');
+    background-color: color('background', 'invert');
+    width: 100%;
     margin: 0;
+    z-index: 1;
   }
 }

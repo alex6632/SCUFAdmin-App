@@ -51,29 +51,134 @@
         <!-- /Page login -->
 
         <!-- Page planning -->
-        <div class="routing show" id="planning">planning</div>
+        <div class="routing" id="planning">
+            <header class="header">
+                <span class="icon icon-magnify jsGoSearch"></span>
+                <span class="icon icon-notification push jsNotifications"></span>
+                <h1 class="title">Planning</h1>
+            </header>
+        </div>
         <!-- /Page planning -->
 
         <!-- Page validation -->
-        <div class="routing" id="validation">validation</div>
+        <div class="routing show" id="validation">
+            <header class="header">
+                <span class="icon icon-magnify jsGoSearch"></span>
+                <span class="icon icon-notification push jsNotifications"></span>
+                <h1 class="title">Validation</h1>
+                <h2 class="header__lvl2">
+                    <span class="header__lvl2__inner"><strong>semaine 54</strong>Lundi 15 Janvier 2018</span>
+                </h2>
+            </header>
+            <div class="validation-item">
+                <div class="validation-item__title">Administratif, <span>Siège</span></div>
+                <div class="validation-item__hours">14:30 - 16h30</div>
+                <ul class="action__list">
+                    <li class="action__list__item">
+                        Validation
+
+                        <div class="switch">
+                            <input type="radio" id="switch1" name="switch" />
+                            <label for="switch1"></label>
+                            <input type="radio" id="switch2" name="switch" checked/>
+                            <label for="switch2"></label>
+                            <input type="radio" id="switch3" name="switch" />
+                            <label for="switch3"></label>
+                            <div class="switch__inner">
+                                <div class="cursor">
+                                    <span></span><span></span><span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
         <!-- /Page validation -->
 
         <!-- Page actions -->
-        <div class="routing" id="actions">actions</div>
+        <div class="routing" id="actions">
+            <header class="header">
+                <span class="icon icon-magnify jsGoSearch"></span>
+                <div class="header__link jsGoLevel1">Retour</div>
+                <span class="icon icon-notification push jsNotifications"></span>
+                <h1 class="title">Actions</h1>
+                <h2 class="header__lvl2"></h2>
+            </header>
+
+            <div class="action level1">
+                <ul class="action__list">
+                    <li class="action__list__item arrow rest">Demande de repos compensatoire</li>
+                    <li class="action__list__item arrow leave">Demande de congés</li>
+                    <!--<li class="action__list__item">Demande de remplacement</li>-->
+                </ul>
+
+                <ul class="action__list">
+                    <li class="action__list__item arrow hours">Demande d'heures supplémentaires</li>
+                    <li class="action__list__item arrow edit">Editer un planning</li>
+                </ul>
+            </div>
+
+            <!-- Repos -->
+            <div class="level2" id="rest">
+                <div class="action">
+                    <span class="action__info">Remarque : la date doit être identique</span>
+                    <ul class="action__list">
+                        <li class="action__list__item"><input type="datetime-local"></li>
+                        <li class="action__list__item"><input type="datetime-local"></li>
+                    </ul>
+                    <ul class="action__list">
+                        <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Congés -->
+            <div class="level2" id="leave">
+                <div class="action">
+                    <ul class="action__list">
+                        <li class="action__list__item"><input type="datetime-local"></li>
+                        <li class="action__list__item"><input type="datetime-local"></li>
+                    </ul>
+                    <ul class="action__list">
+                        <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Heures supp -->
+            <div class="level2" id="hours">
+                <div class="action">
+                    <ul class="action__list">
+                        <li class="action__list__item">
+                            <select name="" id="">
+                                <option value="">Alexandre Simonin</option>
+                                <option value="">Jonathan Guillemot</option>
+                            </select>
+                        </li>
+                    </ul>
+                    <span class="action__info">Remarque : la date doit être identique</span>
+                    <ul class="action__list">
+                        <li class="action__list__item"><input type="date"></li>
+                        <li class="action__list__item"><input type="time"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
         <!-- /Page actions -->
 
         <!-- Page profil -->
-        <div class="routing show" id="profile">
+        <div class="routing" id="profile">
             <header class="header">
-                <span class="icon icon-magnify" id="jsGoSearch"></span>
-                <span class="icon icon-notification push" id="jsGoNotifications"></span>
+                <span class="icon icon-magnify jsGoSearch"></span>
+                <span class="icon icon-notification push jsNotifications"></span>
                 <h1 class="title">Votre profil</h1>
             </header>
         </div>
         <!-- /Page profil -->
 
         <!-- Page notification -->
-        <div class="notification" id="notification">
+        <div class="notification" id="jsNotifications">
             <div class="notification__wait">3 en attente de traitement</div>
             <ul class="notification__list">
                 <li class="notification__list__item">
@@ -81,6 +186,33 @@
                     <div>Demande de repos compensatoire</div>
                     <div>Le 03/04/2018 de 08h00 à 17h00</div>
                     <div class="notification__justification">Ayant atteint 12 heures supplémentaires, je souhaiterais prendre un repos compensatoire ce mardi 3 avril. Je vous remercie par avance.</div>
+                    <div class="options">
+                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
+                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
+                    </div>
+                </li>
+
+                <li class="notification__list__item">
+                    <div class="notification__author">De Jonathan Guillemot</div>
+                    <div>Demande d'heures supplémentaires : 2h</div>
+                    <div>Le 22/02/2018 de 14h00 à 16h00</div>
+                    <div class="notification__motivation">
+                        Acceptez ! <br>
+                        Les heures supplémentaires vous seront bientôt récompensées par un repos compensatoire !</div>
+                    <div class="options">
+                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
+                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
+                    </div>
+                </li>
+
+                <li class="notification__list__item">
+                    <div class="notification__author">De Alexandre Simonin</div>
+                    <div>Demande de congés</div>
+                    <div>Du 07/05/2018 au 11/05/2018</div>
+                    <div class="options">
+                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
+                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
+                    </div>
                 </li>
             </ul>
         </div>
@@ -92,7 +224,7 @@
                 <div class="icon icon-calendar"></div>
                 <div class="tab-bar__item__text">Planning</div>
             </div>
-            <div class="tab-bar__item validation" data-routing="validation">
+            <div class="tab-bar__item validation current" data-routing="validation">
                 <div class="icon icon-list"></div>
                 <div class="tab-bar__item__text">Validations</div>
             </div>
@@ -100,7 +232,7 @@
                 <div class="icon icon-flash"></div>
                 <div class="tab-bar__item__text">Actions</div>
             </div>
-            <div class="tab-bar__item profile current" data-routing="profile">
+            <div class="tab-bar__item profile" data-routing="profile">
                 <div class="icon icon-profile"></div>
                 <div class="tab-bar__item__text">Profil</div>
             </div>

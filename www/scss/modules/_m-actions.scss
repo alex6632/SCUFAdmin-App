@@ -1,0 +1,56 @@
+// _m-actions.scss
+
+.action {
+  &__info {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: center;
+    margin: 20px 0 -12px 0;
+  }
+
+  &__list {
+    width: 100%;
+    margin-top: 20px;
+
+    &__item {
+      position: relative;
+      list-style: none;
+      height: 50px;
+      line-height: 50px;
+      background-color: color('background');
+      padding-left: 15px;
+      font-size: 14px;
+      border-top: solid 1px color('gray', 'super-light');
+
+      &:last-child {
+        border-bottom: solid 1px color('gray', 'super-light');
+      }
+
+      &.arrow {
+        &::after {
+          display: block;
+          font-family: font('icon');
+          content: $icon-right-arrow;
+          color: color('gray', 'super-light');
+          font-size: 15px;
+          right: 10px;
+          @include center-v(absolute);
+        }
+      }
+
+      &.textarea {
+        height: 120px;
+        padding: 0;
+
+        textarea {
+          width: 100%;
+          height: 100%;
+          border: 0;
+          padding: 10px 20px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
+}

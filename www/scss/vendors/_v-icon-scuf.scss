@@ -1,24 +1,23 @@
-$icomoon-font-path: "fonts" !default;
-
-$icon-calendar: \e900;
-$icon-lock: \e901;
-$icon-close: \e902;
-$icon-flash: \e903;
-$icon-list: \e904;
-$icon-logout: \e905;
-$icon-magnify: \e906;
-$icon-notification: \e907;
-$icon-profile: \e908;
-$icon-right-arrow: \e909;
-$icon-valid: \e90a;
+$icon-left-arrow: "\e90b";
+$icon-calendar: "\e900";
+$icon-lock: "\e901";
+$icon-close: "\e902";
+$icon-flash: "\e903";
+$icon-list: "\e904";
+$icon-logout: "\e905";
+$icon-magnify: "\e906";
+$icon-notification: "\e907";
+$icon-profile: "\e908";
+$icon-right-arrow: "\e909";
+$icon-valid: "\e90a";
 
 @font-face {
   font-family: 'icon-scuf';
-  src:  url('#{$icomoon-font-path}/icon-scuf.eot?kevlpm');
-  src:  url('#{$icomoon-font-path}/icon-scuf.eot?kevlpm#iefix') format('embedded-opentype'),
-  url('#{$icomoon-font-path}/icon-scuf.ttf?kevlpm') format('truetype'),
-  url('#{$icomoon-font-path}/icon-scuf.woff?kevlpm') format('woff'),
-  url('#{$icomoon-font-path}/icon-scuf.svg?kevlpm#icon-scuf') format('svg');
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?1x2tqt');
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?1x2tqt#iefix') format('embedded-opentype'),
+  url('#{$icomoon-font-path}/icon-scuf.ttf?1x2tqt') format('truetype'),
+  url('#{$icomoon-font-path}/icon-scuf.woff?1x2tqt') format('woff'),
+  url('#{$icomoon-font-path}/icon-scuf.svg?1x2tqt#icon-scuf') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -42,6 +41,11 @@ $icon-valid: \e90a;
   @return unquote("\"") + $str + unquote("\"");
 }
 
+.icon-left-arrow {
+  &:before {
+    content: unicode($icon-left-arrow);
+  }
+}
 .icon-calendar {
   &:before {
     content: unicode($icon-calendar);

@@ -1,0 +1,105 @@
+// _m-switch.scss
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 25px;
+
+  #switch1,
+  #switch2,
+  #switch3 {
+    position: absolute;
+    z-index:9;
+    -webkit-appearance: none;
+
+    & + label {
+      &::after {
+        position: absolute;
+        content: "";
+        width: 20px; height: 25px;
+        top: 0; left: 0; z-index: 10;
+      }
+    }
+  }
+  #switch1 {
+    & + label {
+      &::after {
+        left: 0;
+      }
+    }
+    &:checked {
+      & ~ .switch__inner {
+        background-color: red;
+        transition: background-color 200ms ease-in-out;
+        .cursor {
+          left: 0;
+          transition: left 200ms ease-in-out;
+        }
+      }
+    }
+  }
+  #switch2 {
+    & + label {
+      &::after {
+        left: 20px;
+      }
+    }
+    &:checked {
+      & ~ .switch__inner {
+        background-color: #fff;
+        transition: background-color 200ms ease-in-out;
+        .cursor {
+          left: 20px;
+          transition: left 200ms ease-in-out;
+        }
+      }
+    }
+  }
+  #switch3 {
+    & + label {
+      &::after {
+        left: 40px;
+      }
+    }
+    &:checked {
+      & ~ .switch__inner {
+        background-color: green;
+        transition: background-color 200ms ease-in-out;
+        .cursor {
+          left: 40px;
+          transition: left 200ms ease-in-out;
+        }
+      }
+    }
+  }
+
+  &__inner {
+    width: 60px;
+    height: 25px;
+    background-color: #fff;
+    border: solid 1px grey;
+    border-radius: 4px;
+
+    .cursor {
+      position: absolute;
+      display: block;
+      width: 20px; height: 25px;
+      top: 0; left: 0;
+      background-color: #eee;
+      border: solid 1px grey;
+      border-radius: 4px;
+      transition: left 200ms ease-in-out;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+        display: inline-block;
+        width: 1px;
+        height: 15px;
+        background-color: color('gray');
+        margin: 0 1px;
+      }
+    }
+  }
+}

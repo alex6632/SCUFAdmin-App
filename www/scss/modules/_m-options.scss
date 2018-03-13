@@ -1,0 +1,50 @@
+// _m-options.scss
+
+.options {
+  position: absolute;
+  width: 120px;
+  height: calc(100% + 1px);
+  right: 0;
+  top: 0;
+  transform: translateX(100%);
+  border-bottom: solid 1px color('gray', 'light');
+  overflow: hidden;
+
+  &__inner {
+    position: relative;
+    width: 50%;
+    height: 100%;
+    float: left;
+    color: color('foreground', 'invert');
+    font-size: 9px;
+    text-transform: uppercase;
+
+    span {
+      bottom: 2px;
+      @include center-h(absolute);
+    }
+
+    &::after {
+      display: block;
+      font-family: font('icon');
+      @include center-h-v(absolute);
+      color: color('foreground', 'invert');
+      font-size: 20px;
+    }
+
+    &--approve {
+      background-color: color('validation', 'ok');
+
+      &::after {
+        content: $icon-valid;
+      }
+    }
+    &--decline {
+      background-color: color('validation', 'no');
+
+      &::after {
+        content: $icon-close;
+      }
+    }
+  }
+}

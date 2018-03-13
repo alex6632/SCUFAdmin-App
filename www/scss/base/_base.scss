@@ -8,27 +8,6 @@ body {
   @include font-size(16px);
   font-family: font('primary');
   font-size: 12px;
-}
-
-.routing {
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  background-color: color('background');
   width: 100%;
-  height: calc(100% - 40px);
-  z-index: 1;
-  @include transition();
-
-  &.hide,
-  &.show {
-    @include transition();
-  }
-  &.hide {
-    opacity: 0;
-  }
-  &.show {
-    opacity: 1;
-  }
+  overflow: hidden;
 }
