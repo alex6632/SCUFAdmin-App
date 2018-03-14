@@ -13,6 +13,14 @@
     width: 100%;
     margin-top: 20px;
 
+    #validation & {
+      margin: 0;
+    }
+
+    #validation .validation-item__justification & {
+      margin-top: 10px;
+    }
+
     &__item {
       position: relative;
       list-style: none;

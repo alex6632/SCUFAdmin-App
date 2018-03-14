@@ -7,8 +7,17 @@
   background-color: color('background');
   width: 100%;
   height: calc(100% - 40px);
+  overflow-y: auto;
   z-index: 1;
   @include transition();
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    height: calc(100% - 85px);
+    top: 55px;
+    overflow-y: auto;
+  }
 
   &.hide,
   &.show {
@@ -43,7 +52,7 @@
     position: absolute;
     top: 60px; left: 0;
     width: 100%;
-    height: calc(100% - 100px);
+    height: calc(100% - 60px);
     opacity: 0;
     transform: translateX(100%);
     transition: all 200ms ease-in-out;

@@ -70,28 +70,84 @@
                     <span class="header__lvl2__inner"><strong>semaine 54</strong>Lundi 15 Janvier 2018</span>
                 </h2>
             </header>
-            <div class="validation-item">
-                <div class="validation-item__title">Administratif, <span>Siège</span></div>
-                <div class="validation-item__hours">14:30 - 16h30</div>
-                <ul class="action__list">
-                    <li class="action__list__item">
-                        Validation
+            <div class="routing__inner">
 
-                        <div class="switch">
-                            <input type="radio" id="switch1" name="switch" />
-                            <label for="switch1"></label>
-                            <input type="radio" id="switch2" name="switch" checked/>
-                            <label for="switch2"></label>
-                            <input type="radio" id="switch3" name="switch" />
-                            <label for="switch3"></label>
-                            <div class="switch__inner">
-                                <div class="cursor">
-                                    <span></span><span></span><span></span>
+                <div class="validation-item border-ok">
+                    <div class="validation-item__title">Administratif, <span>Siège</span></div>
+                    <div class="validation-item__hours">14:30 - 16h30</div>
+                    <ul class="action__list">
+                        <li class="action__list__item">
+                            Validation
+                            <span class="validation-item__status">Fait</span>
+                            <div class="switch">
+                                <input type="radio" id="" name="" class="stop">
+                                <label for="" class="label label--stop" data-status="stop"></label>
+                                <input type="radio" id="" name="" class="ok" checked="checked">
+                                <label for="" class="label label--ok" data-status="ok"></label>
+                                <input type="radio" id="" name="" class="no">
+                                <label for="" class="label label--no" data-status="no"></label>
+                                <div class="switch__btn ok">
+                                    <div class="switch__btn__bar"></div>
+                                    <div class="switch__btn__bar"></div>
+                                    <div class="switch__btn__bar"></div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                    <div class="validation-item__justification jsJustificationNo">
+                        <ul class="action__list">
+                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                        </ul>
+                    </div>
+                    <div class="validation-item__justification jsJustificationStop">
+                        <ul class="action__list">
+                            <li class="action__list__item"><input type="datetime-local"></li>
+                            <li class="action__list__item"><input type="time"></li>
+                        </ul>
+                        <ul class="action__list">
+                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="validation-item border-ok">
+                    <div class="validation-item__title">Terrain, <span>Vallerey</span></div>
+                    <div class="validation-item__hours">17:15 - 18h15</div>
+                    <ul class="action__list">
+                        <li class="action__list__item">
+                            Validation
+                            <span class="validation-item__status">Non Fait</span>
+                            <div class="switch">
+                                <input type="radio" id="" name="" class="stop">
+                                <label for="" class="label label--stop" data-status="stop"></label>
+                                <input type="radio" id="" name="" class="ok" checked="checked">
+                                <label for="" class="label label--ok" data-status="ok"></label>
+                                <input type="radio" id="" name="" class="no">
+                                <label for="" class="label label--no" data-status="no"></label>
+                                <div class="switch__btn ok">
+                                    <div class="switch__btn__bar"></div>
+                                    <div class="switch__btn__bar"></div>
+                                    <div class="switch__btn__bar"></div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="validation-item__justification jsJustificationNo">
+                        <ul class="action__list">
+                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                        </ul>
+                    </div>
+                    <div class="validation-item__justification jsJustificationStop">
+                        <ul class="action__list">
+                            <li class="action__list__item"><input type="datetime-local"></li>
+                            <li class="action__list__item"><input type="time"></li>
+                        </ul>
+                        <ul class="action__list">
+                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
+                        </ul>
+                    </div>
+                </div>
+
             </div>
         </div>
         <!-- /Page validation -->
@@ -125,7 +181,7 @@
                     <span class="action__info">Remarque : la date doit être identique</span>
                     <ul class="action__list">
                         <li class="action__list__item"><input type="datetime-local"></li>
-                        <li class="action__list__item"><input type="datetime-local"></li>
+                        <li class="action__list__item"><input type="time"></li>
                     </ul>
                     <ul class="action__list">
                         <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>

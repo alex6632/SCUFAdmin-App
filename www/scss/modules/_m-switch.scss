@@ -1,105 +1,185 @@
 // _m-switch.scss
 
+//.switch {
+//  @include center-v(absolute);
+//  width: 60px;
+//  height: 25px;
+//  right: 20px;
+//
+//  #stop,
+//  #ok,
+//  #no {
+//    position: absolute;
+//    z-index:9;
+//    -webkit-appearance: none;
+//
+//    & + label {
+//      &::after {
+//        position: absolute;
+//        content: "";
+//        width: 20px; height: 25px;
+//        top: 0; left: 0; z-index: 10;
+//      }
+//    }
+//  }
+//  #stop {
+//    & + label {
+//      &::after {
+//        left: 0;
+//      }
+//    }
+//    &:checked {
+//      & ~ .switch__inner {
+//        background-color: color('background');
+//        transition: background-color 200ms ease-in-out;
+//        .cursor {
+//          background-color: color('validation', 'stop');
+//          left: 0;
+//          transition: left 200ms ease-in-out;
+//        }
+//      }
+//    }
+//  }
+//  #ok {
+//    & + label {
+//      &::after {
+//        left: 20px;
+//      }
+//    }
+//    &:checked {
+//      & ~ .switch__inner {
+//        background-color: color('background');
+//        transition: background-color 200ms ease-in-out;
+//        .cursor {
+//          background-color: color('validation', 'ok');
+//          left: 20px;
+//          transition: left 200ms ease-in-out;
+//        }
+//      }
+//    }
+//  }
+//  #no {
+//    & + label {
+//      &::after {
+//        left: 40px;
+//      }
+//    }
+//    &:checked {
+//      & ~ .switch__inner {
+//        background-color: color('background');
+//        transition: background-color 200ms ease-in-out;
+//        .cursor {
+//          background-color: color('validation', 'no');
+//          left: 40px;
+//          transition: left 200ms ease-in-out;
+//        }
+//      }
+//    }
+//  }
+//
+//  &__inner {
+//    width: 60px;
+//    height: 25px;
+//    background-color: color('background');
+//    border: solid 1px color('gray', 'super-light');
+//    border-radius: 4px;
+//
+//    .cursor {
+//      position: absolute;
+//      display: block;
+//      width: 20px; height: 25px;
+//      top: 0; left: 0;
+//      background-color: color('background');
+//      border: solid 1px color('gray', 'super-light');
+//      border-radius: 4px;
+//      transition: left 200ms ease-in-out;
+//      display: flex;
+//      align-items: center;
+//      justify-content: center;
+//
+//      span {
+//        display: inline-block;
+//        width: 1px;
+//        height: 15px;
+//        background-color: color('gray', 'extra-light');
+//        margin: 0 1px;
+//      }
+//    }
+//  }
+//}
+
 .switch {
-  position: relative;
+  @include center-v(absolute);
   width: 60px;
   height: 25px;
+  right: 20px;
+  border: 1px solid color('gray', 'super-light');
+  border-radius: 5px;
+  background-color: color('background');
+  z-index: 2;
+  @include transition();
+  * {
+    box-sizing: border-box;
+  }
 
-  #switch1,
-  #switch2,
-  #switch3 {
+  input {
+    display: none;
+  }
+
+  .label {
     position: absolute;
-    z-index:9;
-    -webkit-appearance: none;
+    width: 20px; height: 25px;
+    top: 0; cursor: pointer;
+    z-index: 10;
 
-    & + label {
-      &::after {
-        position: absolute;
-        content: "";
-        width: 20px; height: 25px;
-        top: 0; left: 0; z-index: 10;
-      }
+    &--stop {
+      left: 0;
     }
-  }
-  #switch1 {
-    & + label {
-      &::after {
-        left: 0;
-      }
+    &--ok {
+      left: 20px;
     }
-    &:checked {
-      & ~ .switch__inner {
-        background-color: red;
-        transition: background-color 200ms ease-in-out;
-        .cursor {
-          left: 0;
-          transition: left 200ms ease-in-out;
-        }
-      }
-    }
-  }
-  #switch2 {
-    & + label {
-      &::after {
-        left: 20px;
-      }
-    }
-    &:checked {
-      & ~ .switch__inner {
-        background-color: #fff;
-        transition: background-color 200ms ease-in-out;
-        .cursor {
-          left: 20px;
-          transition: left 200ms ease-in-out;
-        }
-      }
-    }
-  }
-  #switch3 {
-    & + label {
-      &::after {
-        left: 40px;
-      }
-    }
-    &:checked {
-      & ~ .switch__inner {
-        background-color: green;
-        transition: background-color 200ms ease-in-out;
-        .cursor {
-          left: 40px;
-          transition: left 200ms ease-in-out;
-        }
-      }
+    &--no {
+      left: auto;
+      right: 0;
     }
   }
 
-  &__inner {
-    width: 60px;
-    height: 25px;
-    background-color: #fff;
-    border: solid 1px grey;
-    border-radius: 4px;
+  &__btn {
+    position: absolute;
+    content: "";
+    top: -1px;
+    width: 20px; height: 25px;
+    background-color: color('validation', 'ok');
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include transition();
+    z-index: 5;
 
-    .cursor {
-      position: absolute;
-      display: block;
-      width: 20px; height: 25px;
-      top: 0; left: 0;
-      background-color: #eee;
-      border: solid 1px grey;
-      border-radius: 4px;
-      transition: left 200ms ease-in-out;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    &__bar {
+      display: inline-block;
+      width: 1px;
+      height: 12px;
+      background-color: color('background');
+      position: relative;
+      z-index: 15;
+      margin: 0 1px;
+    }
 
-      span {
-        display: inline-block;
-        width: 1px;
-        height: 15px;
-        background-color: color('gray');
-        margin: 0 1px;
-      }
+    &.no {
+      left: 41px;
+      background-color: color('validation', 'no');
+      @include transition();
+    }
+    &.stop {
+      background-color: color('validation', 'stop');
+      left: -1px;
+      @include transition();
+    }
+    &.ok {
+      left: 20px;
+      @include transition();
     }
   }
 }

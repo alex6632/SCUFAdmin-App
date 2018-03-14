@@ -86,6 +86,31 @@ var me = {
         $(this).removeClass('swipe');
       }
     });
+  },
+  switch: function (element) {
+    $('.' + element).on('click', function () {
+      var status = $(this).attr('data-status');
+      var validationItem = $(this).parents('.validation-item');
+      validationItem.removeClass('border-ok');
+      validationItem.removeClass('border-no');
+      validationItem.removeClass('border-stop');
+      validationItem.addClass('border-' + status);
+      validationItem.find('.validation-item__justification').fadeOut();
+      $(this).parents('.switch').find('.switch__btn').removeClass('stop');
+      $(this).parents('.switch').find('.switch__btn').removeClass('ok');
+      $(this).parents('.switch').find('.switch__btn').removeClass('no');
+      $(this).parents('.switch').find('.switch__btn').addClass(status);
+
+      if(status == 'stop') {
+        $(this).parents('.switch').prev().text('Partiellement');
+        validationItem.find('.jsJustificationStop').fadeIn();
+      } else if(status == 'ok') {
+        $(this).parents('.switch').prev().text('Fait');
+      } else {
+        $(this).parents('.switch').prev().text('Non fait');
+        validationItem.find('.jsJustificationNo').fadeIn();
+      }
+    })
   }
 };
 
@@ -105,3 +130,11 @@ me.input('login-email');
 me.input('login-pwd');
 
 me.swipe('notification__list__item');
+
+me.switch('stop');
+me.switch('ok');
+me.switch('no');
+
+me.switch('label--stop');
+me.switch('label--ok');
+me.switch('label--no');

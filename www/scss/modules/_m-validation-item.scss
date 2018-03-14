@@ -1,0 +1,46 @@
+// _m-validation-item.scss
+
+.validation-item {
+  margin-top: 10px;
+
+  &.border-ok {
+    border-left: solid 6px color('validation', 'ok');
+    @include transition();
+  }
+  &.border-no {
+    border-left: solid 6px color('validation', 'no');
+    @include transition();
+  }
+  &.border-stop {
+    border-left: solid 6px color('validation', 'stop');
+    @include transition();
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 700;
+    padding-left: 15px;
+    margin-bottom: 6px;
+
+    span {
+      font-style: italic;
+      font-weight: 100;
+      color: color('gray');
+    }
+  }
+  &__hours {
+    font-size: 18px;
+    font-weight: 700;
+    padding-left: 15px;
+    margin-bottom: 6px;
+  }
+  &__status {
+    font-style: italic;
+    color: color('gray', 'super-light');
+    float: right;
+    margin-right: 90px;
+  }
+  &__justification {
+    display: none;
+  }
+}
