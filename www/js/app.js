@@ -111,6 +111,11 @@ var me = {
         validationItem.find('.jsJustificationNo').fadeIn();
       }
     })
+  },
+  progressBar: function () {
+    var screenWidth = screen.width;
+    $('.progress-bar').css('width',screenWidth);
+    $('.progress-bar__bar__wip span').css('min-width',screenWidth);
   }
 };
 
@@ -138,3 +143,5 @@ me.switch('no');
 me.switch('label--stop');
 me.switch('label--ok');
 me.switch('label--no');
+
+me.progressBar();

@@ -15,6 +15,27 @@
   border: 0;
   appearance: none !important;
   @include transition();
+
+  &--small {
+    max-width: 220px;
+    margin: auto;
+    font-size: 12px;
+  }
+
+  &--icon {
+    .icon {
+      margin-right: 6px;
+    }
+  }
+
+  &--red {
+    color: color('foreground', 'invert');
+    background-color: color('validation', 'no');
+  }
+
+  &--mg {
+    margin: 25px auto;
+  }
 }
 
 /// Create themed btn version based on $colors variable map

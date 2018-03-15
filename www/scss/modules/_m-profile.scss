@@ -4,6 +4,17 @@
   text-align: center;
   margin-top: 20px;
 
+  &--dark {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: relative;
+    margin: 0 0 20px 0;
+    background-color: color('background', 'invert');
+    color: color('foreground', 'invert');
+    overflow: hidden;
+  }
+
   .icon {
     font-size: 35px;
   }
@@ -14,5 +25,60 @@
   }
   &__status {
     font-size: 14px;
+  }
+  &__sep {
+    width: 1px;
+    height: 50px;
+    background-color: color('background');
+  }
+  &__col {
+    font-size: 12px;
+    text-transform: uppercase;
+    padding: 10px 0;
+
+    &__nb {
+      display: inline-block;
+      font-size: 30px;
+
+      &--ok {
+        color: color('validation', 'ok');
+      }
+      &--no {
+        color: color('validation', 'no');
+      }
+    }
+    span {
+      font-size: 15px;
+    }
+  }
+
+  &__info-hours {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    background-color: color('background', 'invert');
+    color: color('foreground', 'invert');
+    font-size: 14px;
+    text-transform: uppercase;
+    height: 40px;
+    margin: 5px 0;
+
+    &--mg {
+      margin-top: 25px;
+    }
+
+    &__title {
+      padding-left: 20px;
+    }
+    &__nb {
+      padding-right: 20px;
+      color: color('validation', 'ok');
+      font-size: 24px;
+
+      span {
+        font-size: 12px;
+      }
+    }
   }
 }

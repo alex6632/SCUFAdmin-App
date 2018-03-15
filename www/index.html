@@ -230,24 +230,67 @@
                 <span class="icon icon-notification push jsNotifications"></span>
                 <h1 class="title">Votre profil</h1>
             </header>
+
             <div class="profile-page">
                 <span class="icon icon-profile"></span>
                 <div class="profile-page__name">Jonathan Guillemot</div>
                 <div class="profile-page__status">Salarié</div>
             </div>
+
             <div class="progress-bar">
                 <div class="progress-bar__top">
                     <div class="progress-bar__title">Cette semaine</div>
                     <div class="progress-bar__ratio"><span class="ratio-ok">14</span>/25<span>H</span></div>
                 </div>
                 <div class="progress-bar__bar">
-                    <div class="progress-bar__bar__wip">
-                        <div class="progress-bar__bar__wip__inner"></div>
-                        <span>56%</span>
-                    </div>
-                    <div class="progress-bar__bar__full"><span>56%</span></div>
+                    <div class="progress-bar__bar__text">56%</div>
+                    <div class="progress-bar__bar__wip" style="width: 56%;"><span>56%</span></div>
                 </div>
             </div>
+            <div class="profile-page profile-page--dark">
+                <div class="profile-page__col">
+                    <div class="profile-page__col__nb profile-page__col__nb--ok">14</div><span>h</span>
+                    <div>effectuées</div>
+                </div>
+                <div class="profile-page__sep"></div>
+                <div class="profile-page__col">
+                    <div class="profile-page__col__nb profile-page__col__nb--no">11</div><span>h</span>
+                    <div>non validées</div>
+                </div>
+            </div>
+
+            <div class="progress-bar progress-bar--mg">
+                <div class="progress-bar__top">
+                    <div class="progress-bar__title">Total h. validées</div>
+                    <div class="progress-bar__ratio"><span class="ratio-ok">202</span>/1607<span>H</span></div>
+                </div>
+                <div class="progress-bar__bar">
+                    <div class="progress-bar__bar__text">13%</div>
+                    <div class="progress-bar__bar__wip" style="width: 13%;"><span>13%</span></div>
+                </div>
+            </div>
+            <div class="progress-bar progress-bar--mg">
+                <div class="progress-bar__top">
+                    <div class="progress-bar__title">Total h. planifiées</div>
+                    <div class="progress-bar__ratio"><span class="ratio-ok">283</span>/707<span>H</span></div>
+                </div>
+                <div class="progress-bar__bar">
+                    <div class="progress-bar__bar__text">40%</div>
+                    <div class="progress-bar__bar__wip" style="width: 40%;"><span>40%</span></div>
+                </div>
+            </div>
+
+            <div class="profile-page__info-hours profile-page__info-hours--mg">
+                <div class="profile-page__info-hours__title">Total H. supplémentaires</div>
+                <div class="profile-page__info-hours__nb">6<span>H</span></div>
+            </div>
+            <div class="profile-page__info-hours">
+                <div class="profile-page__info-hours__title">Repos compensatoire (h)</div>
+                <div class="profile-page__info-hours__nb">4,5<span>H</span></div>
+            </div>
+
+            <div class="button button--small button--icon button--red button--mg"><span class="icon icon-logout"></span>Se déconnecter</div>
+
         </div>
         <!-- /Page profil -->
 
