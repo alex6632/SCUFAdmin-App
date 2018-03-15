@@ -1,0 +1,18 @@
+// _m-profile.scss
+
+.profile-page {
+  text-align: center;
+  margin-top: 20px;
+
+  .icon {
+    font-size: 35px;
+  }
+  &__name {
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  &__status {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,69 @@
+// _c-progress-bar.scss
+
+.progress-bar {
+
+  &__top {
+
+  }
+  &__title {
+    display: inline-block;
+    vertical-align: bottom;
+    width: calc(100% - 144px);
+    font-size: 14px;
+    text-transform: uppercase;
+    margin-left: 20px;
+  }
+  &__ratio {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 100px;
+    text-align: right;
+    margin-right: 20px;
+    font-size: 24px;
+    font-weight: 300;
+
+    span {
+      font-size: 14px;
+
+      &.ratio-ok {
+        font-weight:700;
+        color: color('validation', 'ok');
+      }
+    }
+  }
+  &__bar {
+    position: relative;
+    width: 100%;
+    height: 12px;
+
+    &__full,
+    &__wip {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+
+      span {
+        @include center-v(absolute);
+        right: 20px;
+        font-size: 12px;
+      }
+    }
+    &__full {
+      background-color: color('gray', 'super-light');
+      z-index: 1;
+    }
+    &__wip {
+      z-index: 2;
+
+      &__inner {
+        background: color('validation', 'ok') url('../../images/motif_test.png') round;
+        width: 100%;
+        height: 100%;
+        max-width: 56%;
+      }
+      span {
+        color: color('foreground', 'invert');
+      }
+    }
+  }
+}

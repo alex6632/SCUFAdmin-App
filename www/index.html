@@ -61,7 +61,7 @@
         <!-- /Page planning -->
 
         <!-- Page validation -->
-        <div class="routing show" id="validation">
+        <div class="routing" id="validation">
             <header class="header">
                 <span class="icon icon-magnify jsGoSearch"></span>
                 <span class="icon icon-notification push jsNotifications"></span>
@@ -80,11 +80,11 @@
                             Validation
                             <span class="validation-item__status">Fait</span>
                             <div class="switch">
-                                <input type="radio" id="" name="" class="stop">
+                                <input type="radio" name="" class="stop">
                                 <label for="" class="label label--stop" data-status="stop"></label>
-                                <input type="radio" id="" name="" class="ok" checked="checked">
+                                <input type="radio" name="" class="ok" checked="checked">
                                 <label for="" class="label label--ok" data-status="ok"></label>
-                                <input type="radio" id="" name="" class="no">
+                                <input type="radio" name="" class="no">
                                 <label for="" class="label label--no" data-status="no"></label>
                                 <div class="switch__btn ok">
                                     <div class="switch__btn__bar"></div>
@@ -224,12 +224,30 @@
         <!-- /Page actions -->
 
         <!-- Page profil -->
-        <div class="routing" id="profile">
+        <div class="routing show" id="profile">
             <header class="header">
                 <span class="icon icon-magnify jsGoSearch"></span>
                 <span class="icon icon-notification push jsNotifications"></span>
                 <h1 class="title">Votre profil</h1>
             </header>
+            <div class="profile-page">
+                <span class="icon icon-profile"></span>
+                <div class="profile-page__name">Jonathan Guillemot</div>
+                <div class="profile-page__status">Salarié</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-bar__top">
+                    <div class="progress-bar__title">Cette semaine</div>
+                    <div class="progress-bar__ratio"><span class="ratio-ok">14</span>/25<span>H</span></div>
+                </div>
+                <div class="progress-bar__bar">
+                    <div class="progress-bar__bar__wip">
+                        <div class="progress-bar__bar__wip__inner"></div>
+                        <span>56%</span>
+                    </div>
+                    <div class="progress-bar__bar__full"><span>56%</span></div>
+                </div>
+            </div>
         </div>
         <!-- /Page profil -->
 
@@ -280,7 +298,7 @@
                 <div class="icon icon-calendar"></div>
                 <div class="tab-bar__item__text">Planning</div>
             </div>
-            <div class="tab-bar__item validation current" data-routing="validation">
+            <div class="tab-bar__item validation" data-routing="validation">
                 <div class="icon icon-list"></div>
                 <div class="tab-bar__item__text">Validations</div>
             </div>
@@ -288,7 +306,7 @@
                 <div class="icon icon-flash"></div>
                 <div class="tab-bar__item__text">Actions</div>
             </div>
-            <div class="tab-bar__item profile" data-routing="profile">
+            <div class="tab-bar__item profile current" data-routing="profile">
                 <div class="icon icon-profile"></div>
                 <div class="tab-bar__item__text">Profil</div>
             </div>
