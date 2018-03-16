@@ -17,7 +17,7 @@ var me = {
       $(this).parents('.level1').addClass('swipe');
       $('#' + element).addClass('show');
       $(this).parents('.routing').find('.jsGoLevel1').addClass('show');
-      $(this).parents('.routing').find('.jsGoSearch').addClass('hide');
+      $(this).parents('.routing').find('.jsSearch').addClass('hide');
       $(this).parents('.routing').find('.header__lvl2').text(content).addClass('show');
     });
     $('.jsGoLevel1').on('click', function () {
@@ -129,6 +129,7 @@ me.routingLevel2('leave');
 me.routingLevel2('hours');
 
 me.fadeInPage('jsNotifications');
+me.fadeInPage('jsSearch');
 
 me.login();
 me.input('login-email');
