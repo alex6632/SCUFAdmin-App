@@ -116,6 +116,23 @@ var me = {
     var screenWidth = screen.width;
     $('.progress-bar').css('width',screenWidth);
     $('.progress-bar__bar__wip span').css('min-width',screenWidth);
+  },
+  loginAjaxAction: function () {
+    $('.login__form').on('submit', function (e) {
+      e.preventDefault();
+      // 1. Call API to check credentials
+      //...
+      // 2. Open APP profile page
+      $('.login').addClass('hide');
+    });
+  },
+  logoutAjaxAction: function () {
+    $('.jsLogout').on('click', function () {
+      // 1. Call API to remove Session variable
+      //...
+      // 2. Show connect page
+      $('.login').removeClass('hide');
+    });
   }
 };
 
@@ -146,3 +163,7 @@ me.switch('label--ok');
 me.switch('label--no');
 
 me.progressBar();
+
+// AJAX API Calls
+me.loginAjaxAction();
+me.logoutAjaxAction();

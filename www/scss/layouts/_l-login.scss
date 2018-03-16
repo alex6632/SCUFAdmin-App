@@ -1,13 +1,15 @@
 // _l-login.scss
 
 .login {
-  // A SUPPRIMER
-  display: none;
-  // A SUPPRIMER
   position: relative;
   background-color: color('background', 'invert');
   height: 100vh;
-  z-index: 1;
+  z-index: 10;
+
+  &.hide {
+    display:none;
+    z-index: 1;
+  }
 
   &__top {
     position: relative;
@@ -43,9 +45,6 @@
   }
 
   &__info-touch {
-    // A SUPPRIMER
-    //display: none;
-    // A SUPPRIMER
     @include center-h-v(absolute);
     margin-top: 110px;
     width: 100%;
@@ -62,9 +61,6 @@
     @include center-h-v(absolute);
     width: 80%;
     margin-top: 55px;
-    // A SUPPRIMER
-    //display: block;
-    // A SUPPRIMER
 
     &__block {
       position: relative;
