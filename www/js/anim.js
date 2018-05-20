@@ -165,7 +165,7 @@ var anim = {
   },
 
   progressBar: function () {
-    var screenWidth = ($(document).width() - 150) * 0.9;
+    var screenWidth = ($(document).width());
     $('.progress-bar').css('width', screenWidth);
     $('.progress-bar__bar__wip span').css('min-width', screenWidth);
   },

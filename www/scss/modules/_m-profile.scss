@@ -2,15 +2,15 @@
 
 .profile-page {
   position: relative;
-  margin: 20px 0;
+  margin: -1px 0 20px 0;
   background-color: color('background', 'invert');
-  padding: 25px 0 25px 50px;
+  padding: 20px;
   color: color('foreground', 'invert');
   
   &--recap {
-    width: 50%;
-    min-width: 600px;
-    border: solid 2px color('primary');
+    width: 100%;
+    border-left: solid 2px color('primary');
+    border-right: solid 2px color('primary');
     font-size: 14px;
   }
 
@@ -30,12 +30,15 @@
     &__text {
       display: block;
       overflow: hidden;
-      margin: 4px 0;
+      margin: 20px 0;
+      border-bottom: dotted 1px rgb(66, 66, 66);
 
       &--update-pwd {
+        border-bottom: 0;
+
         .container-update-pwd {
           margin-top: 10px;
-          width: 250px;
+          width: 100%;
         }
         input {
           display: block;
@@ -52,10 +55,12 @@
       }
     }
 
-    &__span {
+    &__right {
+      float: right; 
+    }
+    &__left {
       font-style: italic;
       float: left;
-      width: 140px;
 
       &#profile-update-password,
       &#profile-cancel-password {
@@ -77,12 +82,15 @@
   }
 
   .icon {
+    display: block;
+    margin: 0 auto 20px auto;
+    width: 120px;
+    height: 120px;
     font-size: 50px;
-    @include center-v(absolute);
-    right: 50px;
     border: 1px solid color('background');
     border-radius: 50%;
-    padding: 30px;
+    text-align: center;
+    line-height: 120px;
   }
   &__name {
     font-weight: 700;
@@ -100,7 +108,9 @@
   &__col {
     font-size: 12px;
     text-transform: uppercase;
-    padding: 10px 0;
+    padding: 10px;
+    width: 50%;
+    text-align: center;
 
     &__nb {
       display: inline-block;

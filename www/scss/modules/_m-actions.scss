@@ -7,6 +7,7 @@
     font-weight: 700;
     text-align: center;
     margin: 20px 0 -12px 0;
+    padding: 0 15px;
 
     &--left {
       text-align: left;
@@ -144,34 +145,17 @@
   margin-left: 20px;
 }
 
-.date-container {
+select#jsListDaysInProgress {
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 70px;
-  width: 200px;
-  background-color: color('background', 'invert');
+  top: 50px;
+  right: 10px;
   z-index: 9;
-
-  span {
-    display: block;
-    width: 100%;
-    font-size: 13px;
-    color: color('foreground', 'invert');
-    text-align: center;
-    font-weight: 200;
-    text-transform: uppercase;
-    padding-top: 6px;
-  }
-  select {
-    display: block;
-    width: 90%;
-    margin: auto;
-    height: 30px;
-    margin-top: 6px;
-    border: solid 2px color('primary');
-    background: color('primary');
-    color: color('foreground');
-    font-size: 14px;
-  }
+  display: block;
+  width: 150px;
+  margin: auto;
+  height: 30px;
+  border: solid 2px color('primary');
+  background: color('primary');
+  color: color('foreground');
+  font-size: 14px;
 }

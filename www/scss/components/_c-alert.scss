@@ -2,8 +2,8 @@
 
 .msg-flash {
   @include center-h(fixed);
-  bottom: 30px;
-  width: 500px;
+  bottom: 43px;
+  width: 98%;
   z-index: 99;
 
   .alert {
@@ -18,6 +18,22 @@
     }
     &--error {
       background-color: color('validation', 'no');
+    }
+
+    &::after {
+      display: block;
+      content: $icon-close;
+      font-family: font('icon');
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: color('background', 'invert');
+      position: absolute;
+      top: -6px;
+      right: -2px;
+      padding: 6px;
+      font-style: normal;
+      font-size: 8px;
     }
   }
 }

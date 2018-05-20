@@ -6,17 +6,20 @@
   top: 0;
   left: 0;
   background-color: color('background');
-  width: calc(100% - 150px);
-  height: 100%;
-  overflow-x: hidden;
+  width: 100%;
+  height: calc(100% - 40px);
   overflow-y: auto;
   z-index: 1;
   @include transition();
 
   &__center {
     position: relative;
-    width: 90%;
-    margin: 50px auto;
+    width: 100%;
+    height: calc(100vh - 80px);
+    top: 0;
+    padding-top: 1px;
+    overflow-y: scroll;
+    overflow-x: hidden;
   }
 
   &__inner {
@@ -62,15 +65,12 @@
     position: absolute;
     top: 0; left: 0;
     width: 100%;
-    height: 50px;
-    overflow: hidden;
     opacity: 0;
-    margin-bottom: 80px;
     transform: translateX(110%);
     transition: all 200ms ease-in-out;
+    padding-bottom: 40px;
 
     &.show {
-      height: auto;
       opacity: 1;
       transform: translateX(0);
       transition: all 200ms ease-in-out;
@@ -81,6 +81,7 @@
       font-weight: 100;
       font-size: 22px;
       margin-bottom: 20px;
+      text-align: center;
     }
     .list {
       li {

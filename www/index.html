@@ -15,6 +15,7 @@
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
   <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="dist/css/externals/fullcalendar.min.css">
   <link rel="stylesheet" type="text/css" href="dist/css/app.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Rajdhani:300,400,500,700" rel="stylesheet">
   <title>SCUF Admin</title>
@@ -30,20 +31,14 @@
   <!-- Page planning -->
   <div class="routing generic-planning show" id="planning">
     <header class="header">
-      <div class="header__link header__link--icon jsRefreshPlanning">Rafraichir</div>
+      <div class="header__link header__link--refresh jsRefreshPlanning"></div>
       <h1 class="title">Planning</h1>
       <!-- <div class="icon incon-setting calendar-view-trigger"></div> -->
-      <div class="calendar-view">
-        <button class="calendar-view__button calendar-view__button--week active">Vue par semaine</button>
-        <button class="calendar-view__button calendar-view__button--day">Vue par jour</button>
-      </div>
+      
     </header>
     <div class="calendar-navigation">
-      <button class="calendar-navigation-prev">
-        <span class="icon icon-left-arrow"></span>Précédent</button>
-      <button class="calendar-navigation-next">Suivant
-        <span class="icon icon-right-arrow"></span>
-      </button>
+      <button class="calendar-navigation-prev"><span class="icon icon-left-arrow"></span></button>
+      <button class="calendar-navigation-next"><span class="icon icon-right-arrow"></span></button>
     </div>
     <div class="calendar-edit"></div>
     <div class="calendar-add"></div>
@@ -53,69 +48,14 @@
 
   <!-- Page validation -->
   <div class="routing" id="validation">
-    <div class="date-container">
-      <span>Journée(s) non validée(s)</span>
-      <select id="jsListDaysInProgress"></select>
-    </div>
+    <select id="jsListDaysInProgress"></select>
   </div>
-    
-    <!--
-    <div class="routing__center"></div>
-      
-      <div class="validation-item border-ok">
-        <div class="validation-item__title">Terrain,
-          <span>Vallerey</span>
-        </div>
-        <div class="validation-item__hours">17:15 - 18h15</div>
-        <ul class="action__list">
-          <li class="action__list__item">
-            Validation
-            <span class="validation-item__status">Non Fait</span>
-            <div class="switch">
-              <input type="radio" id="" name="" class="stop">
-              <label for="" class="label label--stop" data-status="stop"></label>
-              <input type="radio" id="" name="" class="ok" checked="checked">
-              <label for="" class="label label--ok" data-status="ok"></label>
-              <input type="radio" id="" name="" class="no">
-              <label for="" class="label label--no" data-status="no"></label>
-              <div class="switch__btn ok">
-                <div class="switch__btn__bar"></div>
-                <div class="switch__btn__bar"></div>
-                <div class="switch__btn__bar"></div>
-              </div>
-            </div>
-          </li>
-        </ul>
-        <div class="validation-item__justification jsJustificationNo">
-          <ul class="action__list">
-            <li class="action__list__item textarea">
-              <textarea name="" cols="30" rows="10" placeholder="Justification"></textarea>
-            </li>
-          </ul>
-        </div>
-        <div class="validation-item__justification jsJustificationStop">
-          <ul class="action__list">
-            <li class="action__list__item">
-              <input type="datetime-local">
-            </li>
-            <li class="action__list__item">
-              <input type="time">
-            </li>
-          </ul>
-          <ul class="action__list">
-            <li class="action__list__item textarea">
-              <textarea name="" cols="30" rows="10" placeholder="Justification"></textarea>
-            </li>
-          </ul>
-        </div>
-      </div>
-  </div>-->
   <!-- /Page validation -->
 
   <!-- Page actions -->
   <div class="routing" id="actions">
     <header class="header">
-      <div class="header__link jsGoLevel1">Retour</div>
+      <div class="header__link jsGoLevel1"></div>
       <h1 class="title">Actions
         <span>&nbsp;</span>
       </h1>
@@ -162,22 +102,24 @@
           </form>
         </div>
         <div class="title">Historique des demandes</div>
-        <table class="table list rest-list">
-          <thead>
-            <tr>
-              <th>Date soumission</th>
-              <th>M à j</th>
-              <th>Date</th>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Justification</th>
-              <th>Statut</th>
-              <th class="action">Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="no-result"></div>
+        <div class="table-container">
+          <table class="table list rest-list">
+            <thead>
+              <tr>
+                <th>Date soumission</th>
+                <th>M à j</th>
+                <th>Date</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Justification</th>
+                <th>Statut</th>
+                <th class="action">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="no-result"></div>
+        </div>
       </div>
 
       <!-- Congés -->
@@ -211,21 +153,23 @@
           </form>
         </div>
         <div class="title">Historique des demandes</div>
-        <table class="table list leave-list">
-          <thead>
-            <tr>
-              <th>Date soumission</th>
-              <th>M à j</th>
-              <th>Date de début</th>
-              <th>Date de fin</th>
-              <th>Justification</th>
-              <th>Statut</th>
-              <th class="action">Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="no-result"></div>
+        <div class="table-container">
+          <table class="table list leave-list">
+            <thead>
+              <tr>
+                <th>Date soumission</th>
+                <th>M à j</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
+                <th>Justification</th>
+                <th>Statut</th>
+                <th class="action">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="no-result"></div>
+        </div>
       </div>
 
       <!-- Heures supp -->
@@ -277,203 +221,40 @@
           </form>
         </div>
         <div class="title">Historique des demandes</div>
-        <table class="table list hours-list">
-          <thead>
-            <tr>
-              <th>Date soumission</th>
-              <th>M à j</th>
-              <th>Date</th>
-              <th>Début</th>
-              <th>Fin</th>
-              <th>Assigné</th>
-              <th>Statut</th>
-              <th class="action">Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="no-result"></div>
+        <div class="table-container">
+          <table class="table list hours-list">
+            <thead>
+              <tr>
+                <th>Date soumission</th>
+                <th>M à j</th>
+                <th>Date</th>
+                <th>Début</th>
+                <th>Fin</th>
+                <th>Assigné</th>
+                <th>Statut</th>
+                <th class="action">Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="no-result"></div>
+        </div>
       </div>
 
       <!-- Edit planning -->
-      <div class="level2 generic-planning" id="editPlanning">
+      <div class="level2 generic-planning" id="edit">
         <div class="action">
           <select class="selectUserToEditPlanning"></select>
           <div class="calendar-navigation">
-            <button class="calendar-navigation-prev">
-              <span class="icon icon-left-arrow"></span>Précédent</button>
-            <button class="calendar-navigation-next">Suivant
-              <span class="icon icon-right-arrow"></span>
-            </button>
+            <button class="calendar-navigation-prev"><span class="icon icon-left-arrow"></span></button>
+            <button class="calendar-navigation-next"><span class="icon icon-right-arrow"></span></button>
           </div>
           <div class="calendar-edit"></div>
           <div class="calendar-add"></div>
           <div id="calendar-edit"></div>
         </div>
       </div>
-
-      <!-- User -->
-      <div class="level2" id="addUser">
-        <div class="action">
-          <div class="button button--add" id="jsFormAddUser">+ Ajouter</div>
-          <div class="button button--add" id="jsCloseFormAddUser">- Fermer</div>
-          <form action="" class="form form--add jsFormAddUser">
-            <span class="action__info action__info--left">Général</span>
-            <ul class="action__list">
-              <li class="action__list__item input">
-                <input type="text" name="firstname" class="input-text" placeholder="Prénom">
-              </li>
-              <li class="action__list__item input">
-                <input type="text" name="lastname" class="input-text" placeholder="Nom">
-              </li>
-              <li class="action__list__item input">
-                <input type="text" name="username" class="input-text" placeholder="Nom d'utilisateur">
-              </li>
-              <li class="action__list__item input">
-                <input type="password" name="plain_password" class="input-text" placeholder="Mot de passe">
-              </li>
-              <li class="action__list__item input">
-                <input type="password" name="confirm_password" class="input-text" placeholder="Confirmer le mot de passe">
-              </li>
-              <li class="action__list__item input">
-                <input type="text" name="hours_todo" class="input-text" placeholder="Nombre d'heures à faire (total annuel)">
-              </li>
-            </ul>
-            <span class="action__info action__info--left">Rôle</span>
-            <ul class="action__list">
-              <li class="action__list__item">
-                <select name="role" id="roleList"></select>
-              </li>
-            </ul>
-            <!-- <span class="action__info action__info--left">Droits</span> -->
-            <ul class="action__list">
-              <li class="action__list__item list"></li>
-            </ul>
-            <span class="action__info action__info--left">Supérieur en charge</span>
-            <ul class="action__list">
-              <li class="action__list__item input">
-                <input type="text" name="superior" class="input-text" placeholder="Entrer l'identifiant de l'utilisateur">
-              </li>
-            </ul>
-            <input type="submit" class="button button--small button--mg" value="Ajouter">
-          </form>
-        </div>
-        <div class="title">Liste des utilisateurs</div>
-        <table class="table list user-list">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Prénom</th>
-              <th>Nom</th>
-              <th>Nom utilisateur</th>
-              <th>Rôle</th>
-              <th>Supérieur (Id)</th>
-              <th>Heures planifiées</th>
-              <th class="action">Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
-
-      <!-- Access -->
-      <div class="level2" id="addAccess">
-        <div class="action">
-          <form action="" class="jsFormAddAccess">
-            <ul class="action__list">
-              <li class="action__list__item input">
-                <input type="text" name="title" class="input-text" placeholder="Nouveau droit">
-              </li>
-              <li class="action__list__item input">
-                <input type="text" name="slug" class="input-text" placeholder="Identifiant, en minuscuse, sans accent et sans espaces">
-              </li>
-            </ul>
-            <span class="action__info">Attention : l'identifiant est unique et ne pourra pas être modifié !</span>
-            <input type="submit" class="button button--small button--mg" value="Ajouter">
-          </form>
-        </div>
-        <div class="title">Liste des droits</div>
-        <ul class="list access-list"></ul>
-      </div>
-
-      <!-- Section -->
-      <div class="level2" id="addSection">
-        <div class="action">
-          <form action="" class="jsFormAddSection">
-            <ul class="action__list">
-              <li class="action__list__item input">
-                <input type="text" name="name" class="input-text" placeholder="Nouvelle section">
-              </li>
-            </ul>
-            <input type="submit" class="button button--small button--mg" value="Ajouter">
-          </form>
-        </div>
-        <div class="title">Liste des sections</div>
-        <ul class="list section-list"></ul>
-        <div class="no-result"></div>
-      </div>
-
-      <!-- Semaine -->
-      <div class="level2" id="addWeek">
-        <div class="action">
-          <form action="" class="jsFormAddWeek">
-            <ul class="action__list">
-              <li class="action__list__item">
-                  <span>Pour le salarié</span><select class="jsUsersList" id="selectUserIDForAdd" name="user"></select>
-              </li>
-              <li class="action__list__item">
-                  <span>Attribuer le type</span><select class="jsWeeksTypeList" name="setting"></select>
-              </li>
-              <li class="action__list__item">
-                  <span>Répéter de la semaine</span>
-                  <input type="number" min="1" max="52" name="from">
-              </li>
-              <span></span>
-              <li class="action__list__item">
-                  <span>à la semaine</span>
-                  <input type="number" min="1" max="52" name="to">
-                  <span>(incluse)</span>
-              </li>
-            </ul>
-            <span class="action__info">Si vous ne souhaitez rentrer qu'une seule semaine, mettez le même numéro dans le 2e champs</span>
-            <input type="submit" class="button button--small button--mg" value="Ajouter">
-          </form>
-        </div>
-        <div class="title">Répartition des semaines<select class="jsUsersList" id="selectUserIDForShow"></select></div>
-        <table class="table list week-list">
-          <thead>
-            <tr>
-              <th>Numéro de la semaine</th>
-              <th>Type de semaine</th>
-              <th class="action">Action</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-        <div class="no-result"></div>
-      </div>
-
-      <!-- Setting -->
-      <div class="level2" id="addSetting">
-        <div class="action">
-          <!--<form action="" class="jsFormAddSetting">-->
-          <!--<ul class="action__list">-->
-          <!--<li class="action__list__item input">-->
-          <!--<input type="text" class="input-text" placeholder="Nom du réglage">-->
-          <!--</li>-->
-          <!--<li class="action__list__item input">-->
-          <!--<input type="text" class="input-text" placeholder="Valeur du réglage">-->
-          <!--</li>-->
-          <!--<li class="action__list__item">-->
-          <!--<input type="checkbox" id="is_int" value="nb"><label for="is_int">Cocher si la valeur est un nombre</label>-->
-          <!--</li>-->
-          <!--</ul>-->
-          <!--<input type="submit" class="button button&#45;&#45;small button&#45;&#45;mg" value="Ajouter">-->
-          <!--</form>-->
-        </div>
-        <div class="title">Liste des réglages</div>
-        <ul class="list setting-list"></ul>
-      </div>
+      
     </div>
   </div>
   <!-- /Page actions -->
@@ -490,32 +271,32 @@
       <div class="profile-page profile-page--recap">
         <span class="icon icon-profile"></span>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Prénom: </span>
-          <span id="profile-firstname"></span>
+          <span class="profile-page__edit__left">Prénom: </span>
+          <span id="profile-firstname" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Nom: </span>
-          <span id="profile-lastname"></span>
+          <span class="profile-page__edit__left">Nom: </span>
+          <span id="profile-lastname" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Identifiant: </span>
-          <span id="profile-username"></span>
+          <span class="profile-page__edit__left">Identifiant: </span>
+          <span id="profile-username" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Rôle: </span>
-          <span id="profile-role"></span>
+          <span class="profile-page__edit__left">Rôle: </span>
+          <span id="profile-role" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Supérieur: </span>
-          <span id="profile-superior"></span>
+          <span class="profile-page__edit__left">Supérieur: </span>
+          <span id="profile-superior" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text">
-          <span class="profile-page__edit__span">Liste des accès: </span>
-          <span id="profile-access"></span>
+          <span class="profile-page__edit__left">Liste des accès: </span>
+          <span id="profile-access" class="profile-page__edit__right"></span>
         </div>
         <div class="profile-page__edit__text profile-page__edit__text--update-pwd">
-          <span class="profile-page__edit__span" id="profile-update-password">Modifier mon mot de passe</span>
-          <span class="profile-page__edit__span" id="profile-cancel-password">Annuler</span>
+          <span class="profile-page__edit__left" id="profile-update-password">Modifier mon mot de passe</span>
+          <span class="profile-page__edit__left" id="profile-cancel-password">Annuler</span>
           <div class="container-update-pwd">
             <input type="password" name="previous_password" id="previous_password" placeholder="Ancien mot de passe">
             <input type="password" name="plain_password" id="new_password" placeholder="Nouveau mot de passe">
@@ -590,6 +371,8 @@
         <div class="profile-page__info-hours__nb"></div>
       </div>
 
+      <div class="button button--small button--icon button--red button--mg jsLogout"><span class="icon icon-logout"></span>Se déconnecter</div>
+
     </div>
 
     <!--<div class="button button&#45;&#45;small button&#45;&#45;icon button&#45;&#45;red button&#45;&#45;mg jsLogout"><span class="icon icon-logout"></span>Se déconnecter</div>-->
@@ -628,7 +411,8 @@
 
 
   <div class="tab-bar">
-    <div class="tab-bar__item planning" data-routing="planning">
+    <div class="tab-bar__overlay"></div>
+    <div class="tab-bar__item planning current" data-routing="planning">
       <div class="icon icon-calendar"></div>
       <div class="tab-bar__item__text">Planning</div>
     </div>
@@ -640,7 +424,7 @@
       <div class="icon icon-flash"></div>
       <div class="tab-bar__item__text">Actions</div>
     </div>
-    <div class="tab-bar__item profile current" data-routing="profile">
+    <div class="tab-bar__item profile" data-routing="profile">
       <div class="icon icon-profile"></div>
       <div class="tab-bar__item__text">Profil</div>
     </div>

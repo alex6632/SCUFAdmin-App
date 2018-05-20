@@ -49,26 +49,6 @@ var utils = {
 
   removeEventHandlers: function (element) {
     switch (element) {
-      case "level2Access":
-        $('.jsFormAddAccess').off('submit');
-        $('.access-list').off('click', '.delete');
-        $('.access-list').off('click', 'li .editEnabled');
-        $('.access-list').off('click', 'li .editCanceled');
-        $('.access-list').off('click', 'li .edit');
-        break;
-      case "level2Setting":
-        $('.setting-list').off('click', '.delete');
-        $('.setting-list').off('click', 'li .editEnabled');
-        $('.setting-list').off('click', 'li .editCanceled');
-        $('.setting-list').off('click', 'li .edit');
-        break;
-      case "level2User":
-        $('.jsFormAddUser').off('submit');
-        $('.user-list').off('click', '.delete');
-        $('.user-list').off('click', 'form .editEnabled');
-        $('.user-list').off('click', 'form .editCanceled');
-        $('.user-list').off('click', 'form .edit');
-        break;
       case "level2Leave":
         $('.form-add-leave').off('submit');
         $('.leave-list').off('click', '.delete');
@@ -105,7 +85,8 @@ var utils = {
         $('.calendar-view__button--week').off('click');
         $('.calendar-view__button--day').off('click');
         break;
-      case "calendar-edit":
+      case "level2Edit":
+        $('.selectUserToEditPlanning').off('change');
         $('.generic-planning').off('click', '.jsCloseModalCalendar');
         $('.generic-planning').off('click', '.jsConfirmAddEvent');
         $('.generic-planning').off('click', '.jsConfirmEditEvent');

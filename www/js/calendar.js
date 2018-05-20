@@ -6,22 +6,22 @@ calendar = {
    * Doc : https://fullcalendar.io/docs/
    * --------------------------------------
    */
-  init: function (authTokenVALUE, userID, calendarID, ROLE) {
+  init: function (authTokenVALUE, userID, calendarID, ROLE = null) {
 
     let selectable = true;
     let editable = false;
 
 
-    if(calendarID == 'calendar-edit') {
+    if (calendarID == 'calendar-edit') {
       page.getEmployees(authTokenVALUE, userID, 'planning');
       userID = $('.selectUserToEditPlanning').val();
+      $('#calendar-edit').fullCalendar('refetchEvents');
       selectable = true;
       editable = true;
 
       $('.selectUserToEditPlanning').on('change', function () {
         userID = $(this).val();
         $('#calendar-edit').fullCalendar('refetchEvents');
-        console.log('Switch to calendar : ' + userID);
       });
 
     } else {
@@ -35,10 +35,11 @@ calendar = {
     el.parents('.routing').append('<div class="loader"><div class="loader__gif"></div></div>');
 
     el.fullCalendar({
-      defaultView: 'agendaWeek', // 'basicDay'
+      defaultView: 'agendaDay', // 'basicDay'
       weekends: false,
       selectable: selectable,
       editable: editable,
+      height: 650,
       //lazyFetching: false,
       nowIndicator: true,
       slotDuration: '00:15:00',
@@ -48,8 +49,8 @@ calendar = {
       defaultTimedEventDuration: '00:00:00',
       //defaultAllDayEventDuration: '00:00:00',
       header: {
-        left: 'title', //day,basicDay week,basicWeek myCustomButton
-        center: '',
+        left: '', //day,basicDay week,basicWeek myCustomButton
+        center: 'title',
         right: '' //today prev next
       },
       views: {
@@ -62,19 +63,11 @@ calendar = {
        * -------------------
        */
       viewRender: function (view) {
-        if (view.type == 'agendaWeek') {
-          window.setTimeout(function () {
-            el.find('.fc-toolbar > div > h2').empty().append(
-              "<div>" + view.start.format('[Semaine du<span>] D [</span>au<span>]') + "" + view.end.format(' D [</span>] MMMM YYYY') + "</div>"
-            );
-          }, 0);
-        } else {
-          window.setTimeout(function () {
-            el.find('.fc-toolbar > div > h2').empty().append(
-              "<div>" + view.start.format('[Journée du<span>] D MMMM YYYY[</span>]') + "</div>"
-            );
-          }, 0);
-        }
+        window.setTimeout(function () {
+          el.find('.fc-toolbar > div > h2').empty().append(
+            "<div>" + view.start.format('D/MM/YYYY') + "</div>"
+          );
+        }, 0);
       },
       /*
        * -------------------
@@ -90,7 +83,7 @@ calendar = {
             xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
           },
           success: function (response) {
-            console.log('Calendar loaded successfully');
+            console.log('Calendar loaded successfully for user [' + userID + ']');
             $('#planning .loader, #actions .loader').remove();
             callback(response);
           },
@@ -100,7 +93,7 @@ calendar = {
           }
         });
       },
-      eventRender: function(event, element) {
+      eventRender: function (event, element) {
         element.find('.fc-title').append(', <span class="event-location">' + event.location + '</span>');
       },
       /*
@@ -127,7 +120,8 @@ calendar = {
           type: 'PATCH',
           data: {
             start: updatedStart,
-            end: updatedEnd
+            end: updatedEnd,
+            type: 'basic_ext',
           },
           beforeSend: function (xhr) {
             xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
@@ -172,7 +166,8 @@ calendar = {
           type: 'PATCH',
           data: {
             start: updatedStart,
-            end: updatedEnd
+            end: updatedEnd,
+            type: 'basic_ext',
           },
           beforeSend: function (xhr) {
             xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
@@ -201,7 +196,7 @@ calendar = {
       eventClick: function (event, element) {
         console.log(event);
 
-        if(calendarID == 'calendar') {
+        if (calendarID == 'calendar') {
           return false;
         }
 
@@ -217,11 +212,16 @@ calendar = {
         let blueBorderChecked = event.borderColor == "#2f67f5" ? "checked" : "";
         let darkBorderChecked = event.borderColor == "#1e1e1e" ? "checked" : "";
 
+        let whoiam = calendarID == "calendar" ? "basic_me" : "basic_ext";
+
         let editModale = '' +
           '<form class="calendar-modale" id="jsUpdateEventForm">' +
           '<div class="calendar-modale__inner">' +
           '<div class="calendar-modale__title">Modifier un événement</div>' +
           '<div class="calendar-modale__input-container">' +
+          '<input type="hidden" name="start" value="' + moment(event.start).format('YYYY-MM-DD HH:mm:ss') + '">' +
+          '<input type="hidden" name="end" value="' + moment(event.end).format('YYYY-MM-DD HH:mm:ss') + '">' +
+          '<input type="hidden" name="type" value="' + whoiam + '">' +
           '<input type="text" name="title" class="calendar-modale__input" id="jsCalendarAddTitle" placeholder="Titre" value="' + event.title + '">' +
           '<input type="text" name="location" class="calendar-modale__input" id="jsCalendarAddLocation" placeholder="Lieu" value="' + event.location + '">' +
           '</div>' +
@@ -261,7 +261,7 @@ calendar = {
           '</form>';
 
         el.parents('.generic-planning').find('.calendar-edit').append(editModale);
-        
+
         /* 
          * ----------------------
          * DELETE EVENT
@@ -431,7 +431,7 @@ calendar = {
           '</div>' +
           '</form>';
 
-        el.parents('.generic-planning').find('.calendar-add').append(addModale); 
+        el.parents('.generic-planning').find('.calendar-add').append(addModale);
 
         el.parents('.generic-planning').on('click', '.jsConfirmAddEvent', function (e) {
           e.preventDefault();
@@ -511,7 +511,7 @@ calendar = {
 
   modal: function (el, authTokenVALUE, userID, calendarID) {
     $('.generic-planning').on('click', '.jsCloseModalCalendar', function () {
-      
+
       // Remove modale & error
       $(this).parents('.calendar-modale').remove();
       $(this).parents('.calendar-modale').find('.calendar-modale-error').text('');
@@ -522,7 +522,11 @@ calendar = {
       $(this).parents('.generic-planning').find('.calendar-add #bg-dark').prop('checked', true);
 
       // Remove handlers event
-      utils.removeEventHandlers(calendarID);
+      if(calendarID == "calendar") {
+        utils.removeEventHandlers(calendarID);
+      } else {
+        utils.removeEventHandlers('level2Edit');
+      }
       userID = localStorage.getItem('userID');
       calendar.init(authTokenVALUE, userID, calendarID);
       el.fullCalendar('refetchEvents');
@@ -539,19 +543,6 @@ calendar = {
     $('.calendar-navigation-next').on('click', function () {
       $(this).parents('.generic-planning').find(el).fullCalendar('next');
     });
-    // Switch on week view
-    $('.calendar-view__button--week').on('click', function () {
-      $('.calendar-view__button').removeClass('active');
-      $(this).addClass('active');
-      $(this).parents('.generic-planning').find(el).fullCalendar('changeView', 'agendaWeek');
-    });
-    // Switch on day view
-    $('.calendar-view__button--day').on('click', function () {
-      $('.calendar-view__button').removeClass('active');
-      $(this).addClass('active');
-      $(this).parents('.generic-planning').find(el).fullCalendar('changeView', 'agendaDay');
-    });
-
   },
 
   refresh: function (authTokenVALUE, userID) {
@@ -561,11 +552,11 @@ calendar = {
       $('#calendar').fullCalendar('refetchEventSources');
     });
   },
- /*
-  * ------------------------------------
-  * ADD EVENT IF NOTIFICATION IS ACCEPT
-  * ------------------------------------
-  */
+  /*
+   * ------------------------------------
+   * ADD EVENT IF NOTIFICATION IS ACCEPT
+   * ------------------------------------
+   */
   addEventFromNotification: function (authTokenVALUE, userConnectedID) {
     $('.notification__list').on('click', '.jsApproveAction', function (e) {
       e.preventDefault();
@@ -582,7 +573,7 @@ calendar = {
       let eventData;
       let api = "";
 
-      switch(eventType) {
+      switch (eventType) {
         case 'hours':
           eventBg = '#1e1e1e';
           eventBorder = '#1e1e1e';

@@ -440,7 +440,7 @@ var page = {
     role2 += role1 + '' +
     '<ul class="action__list">' +
       '<li class="action__list__item premium" data-routing="dashboard">Dashboard</li>' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="editPlanning">Editer un planning</li>' +
+      '<li class="action__list__item arrow jsGoLevel2" data-routing="edit">Editer un planning</li>' +
     '</ul>';
 
     // SUPERVISEUR
@@ -448,27 +448,15 @@ var page = {
     role3 += role2 + '' +
     '<ul class="action__list">' +
       '<li class="action__list__item arrow jsGoLevel2" data-routing="hours">Heures supplémentaires</li>' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="addUser">Utilisateurs</li>' +
     '</ul>';
 
     // ADMINISTRATEUR
-    let role4 = '';
-    role4 += role3 + '' +
-    '<ul class="action__list">' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="addWeek">Semaines</li>' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="addSection">Sections</li>' +
-    '</ul>';
+    let role4 = role3;
 
     // SUPER ADMINISTRATEUR (ROOT)
-    let role42 = '';
-    role42 += role4 + '' +
-    '<ul class="action__list">' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="addAccess">Droits</li>' +
-      '<li class="action__list__item arrow jsGoLevel2" data-routing="addSetting">Réglages</li>' +
-    '</ul>';
+    let role42 = role4;
 
     let action = role1;
-
     switch(ROLE) {
       case '1':
         action = role1;
@@ -562,7 +550,7 @@ var page = {
             '<h1 class="title">Validation</h1>' +
           '</header>' +
           '<h2 class="header-lvl2">' +
-            '<span>semaine ' + response.week + '</span>' + response.date +
+            '<div class="header-lvl2__inner"><span>semaine ' + response.week + '</span>' + response.date + '</div>' +
           '</h2>' +
           '<div class="routing__center"><span class="success">Tout a correctement été validé pour cette journée !</span></div>';
           $('#validation').append(html);
@@ -575,7 +563,7 @@ var page = {
             '</header>' +
 
             '<h2 class="header-lvl2">' +
-              '<span>semaine ' + response.week + '</span>' + response.date +
+              '<div class="header-lvl2__inner"><span>semaine ' + response.week + '</span>' + response.date + '</div>' +
             '</h2>' +
 
             '<div class="routing__center">' +
@@ -656,12 +644,12 @@ var page = {
                   'Validation' +
                   '<span class="validation-item__status">' + text + '</span>' +
                   '<div class="switch">' +
+                  '<input type="radio" value="0" class="no" ' + noChecked + '>' +
+                  '<label for="" class="label label--no" data-status="no"></label>' +
                   '<input type="radio" value="2" class="stop" ' + stopChecked + '>' +
                   '<label for="" class="label label--stop" data-status="stop"></label>' +
                   '<input type="radio" value="1" class="ok" ' + okChecked + '>' +
                   '<label for="" class="label label--ok" data-status="ok"></label>' +
-                  '<input type="radio" value="0" class="no" ' + noChecked + '>' +
-                  '<label for="" class="label label--no" data-status="no"></label>' +
                   '<div class="switch__btn ' + switchBtn + '">' +
                   '<div class="switch__btn__bar"></div>' +
                   '<div class="switch__btn__bar"></div>' +

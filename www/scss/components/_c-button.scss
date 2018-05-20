@@ -31,6 +31,16 @@
   &--red {
     color: color('foreground', 'invert');
     background-color: color('validation', 'no');
+    width: 96%;
+    max-width: initial;
+    padding: 15px;
+
+    .icon {
+      font-size: 20px;
+      position: relative;
+      top: 3px;
+      margin-right: 10px;
+    }
   }
 
   &--mg {

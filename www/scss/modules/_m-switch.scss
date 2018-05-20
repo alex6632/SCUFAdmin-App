@@ -132,15 +132,15 @@
     top: 0; cursor: pointer;
     z-index: 10;
 
-    &--stop {
+    &--no {
       left: 0;
     }
-    &--ok {
+    &--stop {
       left: 20px;
     }
-    &--no {
+    &--ok {
       left: auto;
-      right: 0;
+      right: 0; 
     }
   }
 
@@ -175,15 +175,15 @@
     }
 
     &.no {
-      left: 41px;
+      left: -1px;
       background-color: color('validation', 'no');
     }
     &.stop {
       background-color: color('validation', 'stop');
-      left: -1px;
+      left: 20px;
     }
     &.ok {
-      left: 20px;
+      left: 41px;
     }
   }
 }
