@@ -4,11 +4,11 @@
 .search {
   display: none;
   position: absolute;
-  top: 0; left: 0;
+  top: 30px; left: 0;
   background-color: color('background');
-  width: calc(100% - 150px);
-  height: 100%;
-  overflow-y: auto;
+  width: 100%;
+  height: calc(100% - 30px);
+  overflow-y: scroll;
   z-index: 10;
 
   &__wait {
@@ -45,42 +45,6 @@
     padding: 5px 20px 5px 20px;
   }
 
-  &__status {
-    position: absolute;
-    right: 20px;
-    top: 20px;
-    
-    &::before {
-      display: inline-block;
-      content: "";
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-right: 5px;
-    }
-
-    &--refused {
-      &::before {
-        background-color: color('validation', 'no');
-      }
-
-      &::after {
-        display: inline-block;
-        content: "Déclinée";
-      }
-    }
-    &--accepted {
-      &::before {
-        background-color: color('validation', 'ok');
-      }
-
-      &::after {
-        display: inline-block;
-        content: "Acceptée";
-      }
-    }
-  }
-
   &__list {
     width: 100%;
     padding: 0;
@@ -94,20 +58,6 @@
       border-bottom: solid 1px color('gray', 'light');
       @include transition();
 
-      &.not-seen {
-        background-color: rgba(color('primary'), .1);
-      }
-
-      &.search-response {
-        padding: 0 20px;
-        line-height: 25px;
-        border-top: 0;
-        padding-bottom: 20px;
-        text-transform: uppercase;
-      }
-      &.small-padding {
-        padding: 0 20px;
-      }
       &.swipe {
         transform: translateX(-120px);
         @include transition();
@@ -124,11 +74,6 @@
     &__item {
       &:first-child {
         border-top: solid 1px color('gray', 'light');
-      }
-      &.search-response {
-        &:first-child {
-          border-top: 0;
-        }
       }
     }
   }

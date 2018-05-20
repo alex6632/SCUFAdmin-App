@@ -7,10 +7,6 @@
     font-weight: 700;
     text-align: center;
     margin: 20px 0 -12px 0;
-
-    &--left {
-      text-align: left;
-    }
   }
 
   &__list {
@@ -34,33 +30,6 @@
       padding-left: 15px;
       font-size: 14px;
       border-top: solid 1px color('gray', 'super-light');
-      cursor: pointer;
-
-      input:invalid+span:after {
-        display: inline-block;
-        content: 'Vous ne pouvez pas dépasser le créneau horaire de base.';
-        color: color('validation', 'no');
-        margin-left: 15px;
-        font-size: 12px;
-        font-weight: 700;
-      }
-
-      .error-msg {
-        color: color('validation', 'no');
-        margin-left: 15px;
-        font-size: 12px;
-        font-weight: 700;
-
-        &--validation {
-          position: relative;
-          bottom: 8px;
-        }
-
-        &--top {
-          display: block;
-          margin-top: -30px; 
-        }
-      }
 
       &:last-child {
         border-bottom: solid 1px color('gray', 'super-light');
@@ -78,22 +47,6 @@
         }
       }
 
-      &.premium {
-        padding-left: 40px;
-        background-color: rgba(color('primary'),.3);
-        cursor: not-allowed;
-
-        &::before {
-          display: block;
-          font-family: font('icon');
-          content: $icon-lock;
-          color: #beb139;
-          font-size: 15px;
-          left: 15px;
-          @include center-v(absolute);
-        }
-      }
-
       &.textarea {
         height: 120px;
         padding: 0;
@@ -104,11 +57,6 @@
           border: 0;
           padding: 10px 20px;
           font-size: 14px;
-          resize: none;
-
-          &.small {
-            width: calc(100% - 200px);
-          }
         }
       }
 
@@ -118,60 +66,11 @@
         .input-text {
           width: 100%;
           height: 100%;
-          padding: 16px 20px;
+          padding: 0 20px;
           font-size: 14px;
           line-height: 50px;
-          border: 0;
-        }
-      }
-
-      &.list {
-        height: auto;
-        overflow: hidden;
-
-        div {
-          height: 20px;
-          line-height: 20px;
-          margin: 5px 0;
         }
       }
     }
-  }
-}
-
-.jsUsersList {
-  position: relative;
-  margin-left: 20px;
-}
-
-.date-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 70px;
-  width: 200px;
-  background-color: color('background', 'invert');
-  z-index: 9;
-
-  span {
-    display: block;
-    width: 100%;
-    font-size: 13px;
-    color: color('foreground', 'invert');
-    text-align: center;
-    font-weight: 200;
-    text-transform: uppercase;
-    padding-top: 6px;
-  }
-  select {
-    display: block;
-    width: 90%;
-    margin: auto;
-    height: 30px;
-    margin-top: 6px;
-    border: solid 2px color('primary');
-    background: color('primary');
-    color: color('foreground');
-    font-size: 14px;
   }
 }

@@ -1,31 +1,5 @@
 // _c-link.scss
 
 .link {
-  background-color: color('background', 'invert');
-  color: color('foreground', 'invert');
-  font-weight: 100;
-  font-style: italic;
-  display: inline-block;
-  margin-left: 10px;
-  padding: 2px 6px;
-  cursor: pointer;
 
-  &.hide,
-  &.edit,
-  &.editCanceled {
-    display: none;
-  }
-  &.show {
-    display: inline-block;
-  }
-}
-.link-table {
-  &.hide,
-  &.edit,
-  &.editCanceled {
-    display: none;
-  }
-  &.show {
-    display: inline-block;
-  }
 }
