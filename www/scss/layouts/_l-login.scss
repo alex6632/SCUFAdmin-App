@@ -1,7 +1,6 @@
 // _l-login.scss
 
-.login,
-.loginTrigger {
+.login {
   position: relative;
   background-color: color('background', 'invert');
   height: 100vh;
@@ -15,7 +14,6 @@
   &__top {
     position: relative;
     height: calc(100% - 205px);
-    cursor: pointer;
     @include transition();
 
     &__inner {
@@ -61,13 +59,13 @@
   &__form {
     display: none;
     @include center-h-v(absolute);
-    width: 400px;
-    margin-top: 0;
+    width: 80%;
+    margin-top: 55px;
 
     &__block {
       position: relative;
       height: 40px;
-      margin: 35px 0;
+      margin: 25px 0;
     }
 
     &__label,
@@ -100,18 +98,15 @@
     }
 
     .button {
-      margin-top: 70px;
+      margin-top: 40px;
     }
   }
 
   &.step2 {
     .login {
-      &__top {
-        cursor: auto;
-      }
       &__head {
         width: 130px; height: 130px;
-        margin-top: 40px;
+        margin-top: 0;
         top: 20px;
         padding: 25px;
         transform: translate(-50%, 0);

@@ -36,40 +36,6 @@
   &--mg {
     margin: 25px auto;
   }
-
-  &--add {
-    display: inline-block;
-    padding: 8px 16px;
-    width: auto;
-    background-color: color('background', 'invert');
-    color: color('foreground', 'invert');
-    font-weight: 100;
-    font-style: italic;
-    font-size: 12px;
-    cursor: pointer;
-    @include transition();
-
-    &:hover {
-      color: color('foreground');
-      background-color: color('primary');
-      @include transition();
-    }
-
-    &#jsCloseFormAddUser,
-    &.hide {
-      display: none;
-
-      &.show {
-        display: inline-block;
-      }
-      &.hide {
-        display: none;
-      }
-    }
-    &.hide {
-      display: none;
-    }
-  }
 }
 
 /// Create themed btn version based on $colors variable map
