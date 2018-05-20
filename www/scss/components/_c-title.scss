@@ -18,3 +18,22 @@
     color: color('secondary');
   }
 }
+
+.h2 {
+  display: inline-block;
+  vertical-align: middle;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin: 30px 0 12px 0;
+  font-size: 22px;
+
+  &::before {
+    display: inline-block;
+    vertical-align: middle;
+    content: "";
+    width: 40px;
+    height: 5px;
+    background-color: color('primary');
+    margin-right: 10px;
+  }
+}
