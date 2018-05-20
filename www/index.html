@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <!--
+
+<head>
+  <!--
         Customize this policy to fit your own app's needs. For more guidance, see:
             https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
         Some notes:
@@ -10,374 +11,675 @@
             * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
                 * Enable inline JS: add 'unsafe-inline' to default-src
         -->
-        <!--<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="dist/css/app.css">
-        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Rajdhani:300,400,500,700" rel="stylesheet">
-        <title>SCUF Admin</title>
-    </head>
-    <body>
-        <!-- Page login -->
-        <div class="login hide">
-            <div class="login__top" id="jsShowConnectForm">
-                <div class="login__top__inner">
-                    <div class="login__head">
-                        <div class="icon icon-lock"></div>
-                        <div class="login__head__title">Connexion</div>
-                    </div>
+  <meta charset="UTF-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+  <link rel="stylesheet" type="text/css" href="dist/css/app.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,700|Rajdhani:300,400,500,700" rel="stylesheet">
+  <title>SCUF Admin</title>
+</head>
 
-                    <div class="login__info-touch">Toucher pour vous connecter</div>
+<body>
+  <div class="msg-flash"></div>
 
-                    <form action="" class="login__form">
-                        <div class="login__form__block">
-                            <label for="login-email" class="login__form__label">Email</label>
-                            <input type="text" class="login__form__input" id="login-email"/>
-                        </div>
-                        <div class="login__form__block">
-                            <label for="login-pwd" class="login__form__label">Mot de passe</label>
-                            <input type="password" class="login__form__input" id="login-pwd"/>
-                        </div>
-                        <button type="submit" class="button">Se connecter</button>
-                    </form>
-                </div>
-            </div>
+  <!-- Page login -->
+  <div class="loginTrigger"></div>
+  <!-- /Page login -->
 
-            <div class="logo">
-                <img src="images/logo.jpg" alt="">
-            </div>
+  <!-- Page planning -->
+  <div class="routing generic-planning show" id="planning">
+    <header class="header">
+      <div class="header__link header__link--icon jsRefreshPlanning">Rafraichir</div>
+      <h1 class="title">Planning</h1>
+      <!-- <div class="icon incon-setting calendar-view-trigger"></div> -->
+      <div class="calendar-view">
+        <button class="calendar-view__button calendar-view__button--week active">Vue par semaine</button>
+        <button class="calendar-view__button calendar-view__button--day">Vue par jour</button>
+      </div>
+    </header>
+    <div class="calendar-navigation">
+      <button class="calendar-navigation-prev">
+        <span class="icon icon-left-arrow"></span>Précédent</button>
+      <button class="calendar-navigation-next">Suivant
+        <span class="icon icon-right-arrow"></span>
+      </button>
+    </div>
+    <div class="calendar-edit"></div>
+    <div class="calendar-add"></div>
+    <div id="calendar"></div>
+  </div>
+  <!-- /Page planning -->
+
+  <!-- Page validation -->
+  <div class="routing" id="validation">
+    <div class="date-container">
+      <span>Journée(s) non validée(s)</span>
+      <select id="jsListDaysInProgress"></select>
+    </div>
+  </div>
+    
+    <!--
+    <div class="routing__center"></div>
+      
+      <div class="validation-item border-ok">
+        <div class="validation-item__title">Terrain,
+          <span>Vallerey</span>
         </div>
-        <!-- /Page login -->
-
-        <!-- Page planning -->
-        <div class="routing" id="planning">
-            <header class="header">
-                <span class="icon icon-magnify jsSearch"></span>
-                <span class="icon icon-notification push jsNotifications"></span>
-                <h1 class="title">Planning</h1>
-            </header>
+        <div class="validation-item__hours">17:15 - 18h15</div>
+        <ul class="action__list">
+          <li class="action__list__item">
+            Validation
+            <span class="validation-item__status">Non Fait</span>
+            <div class="switch">
+              <input type="radio" id="" name="" class="stop">
+              <label for="" class="label label--stop" data-status="stop"></label>
+              <input type="radio" id="" name="" class="ok" checked="checked">
+              <label for="" class="label label--ok" data-status="ok"></label>
+              <input type="radio" id="" name="" class="no">
+              <label for="" class="label label--no" data-status="no"></label>
+              <div class="switch__btn ok">
+                <div class="switch__btn__bar"></div>
+                <div class="switch__btn__bar"></div>
+                <div class="switch__btn__bar"></div>
+              </div>
+            </div>
+          </li>
+        </ul>
+        <div class="validation-item__justification jsJustificationNo">
+          <ul class="action__list">
+            <li class="action__list__item textarea">
+              <textarea name="" cols="30" rows="10" placeholder="Justification"></textarea>
+            </li>
+          </ul>
         </div>
-        <!-- /Page planning -->
-
-        <!-- Page validation -->
-        <div class="routing" id="validation">
-            <header class="header">
-                <span class="icon icon-magnify jsSearch"></span>
-                <span class="icon icon-notification push jsNotifications"></span>
-                <h1 class="title">Validation</h1>
-                <h2 class="header__lvl2">
-                    <span class="header__lvl2__inner"><strong>semaine 54</strong>Lundi 15 Janvier 2018</span>
-                </h2>
-            </header>
-            <div class="routing__inner">
-
-                <div class="validation-item border-ok">
-                    <div class="validation-item__title">Administratif, <span>Siège</span></div>
-                    <div class="validation-item__hours">14:30 - 16h30</div>
-                    <ul class="action__list">
-                        <li class="action__list__item">
-                            Validation
-                            <span class="validation-item__status">Fait</span>
-                            <div class="switch">
-                                <input type="radio" name="" class="stop">
-                                <label for="" class="label label--stop" data-status="stop"></label>
-                                <input type="radio" name="" class="ok" checked="checked">
-                                <label for="" class="label label--ok" data-status="ok"></label>
-                                <input type="radio" name="" class="no">
-                                <label for="" class="label label--no" data-status="no"></label>
-                                <div class="switch__btn ok">
-                                    <div class="switch__btn__bar"></div>
-                                    <div class="switch__btn__bar"></div>
-                                    <div class="switch__btn__bar"></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="validation-item__justification jsJustificationNo">
-                        <ul class="action__list">
-                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                        </ul>
-                    </div>
-                    <div class="validation-item__justification jsJustificationStop">
-                        <ul class="action__list">
-                            <li class="action__list__item"><input type="datetime-local"></li>
-                            <li class="action__list__item"><input type="time"></li>
-                        </ul>
-                        <ul class="action__list">
-                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="validation-item border-ok">
-                    <div class="validation-item__title">Terrain, <span>Vallerey</span></div>
-                    <div class="validation-item__hours">17:15 - 18h15</div>
-                    <ul class="action__list">
-                        <li class="action__list__item">
-                            Validation
-                            <span class="validation-item__status">Non Fait</span>
-                            <div class="switch">
-                                <input type="radio" id="" name="" class="stop">
-                                <label for="" class="label label--stop" data-status="stop"></label>
-                                <input type="radio" id="" name="" class="ok" checked="checked">
-                                <label for="" class="label label--ok" data-status="ok"></label>
-                                <input type="radio" id="" name="" class="no">
-                                <label for="" class="label label--no" data-status="no"></label>
-                                <div class="switch__btn ok">
-                                    <div class="switch__btn__bar"></div>
-                                    <div class="switch__btn__bar"></div>
-                                    <div class="switch__btn__bar"></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                    <div class="validation-item__justification jsJustificationNo">
-                        <ul class="action__list">
-                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                        </ul>
-                    </div>
-                    <div class="validation-item__justification jsJustificationStop">
-                        <ul class="action__list">
-                            <li class="action__list__item"><input type="datetime-local"></li>
-                            <li class="action__list__item"><input type="time"></li>
-                        </ul>
-                        <ul class="action__list">
-                            <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
+        <div class="validation-item__justification jsJustificationStop">
+          <ul class="action__list">
+            <li class="action__list__item">
+              <input type="datetime-local">
+            </li>
+            <li class="action__list__item">
+              <input type="time">
+            </li>
+          </ul>
+          <ul class="action__list">
+            <li class="action__list__item textarea">
+              <textarea name="" cols="30" rows="10" placeholder="Justification"></textarea>
+            </li>
+          </ul>
         </div>
-        <!-- /Page validation -->
+      </div>
+  </div>-->
+  <!-- /Page validation -->
 
-        <!-- Page actions -->
-        <div class="routing" id="actions">
-            <header class="header">
-                <span class="icon icon-magnify jsSearch"></span>
-                <div class="header__link jsGoLevel1">Retour</div>
-                <span class="icon icon-notification push jsNotifications"></span>
-                <h1 class="title">Actions</h1>
-                <h2 class="header__lvl2"></h2>
-            </header>
+  <!-- Page actions -->
+  <div class="routing" id="actions">
+    <header class="header">
+      <div class="header__link jsGoLevel1">Retour</div>
+      <h1 class="title">Actions
+        <span>&nbsp;</span>
+      </h1>
+    </header>
 
-            <div class="action level1">
-                <ul class="action__list">
-                    <li class="action__list__item arrow rest">Demande de repos compensatoire</li>
-                    <li class="action__list__item arrow leave">Demande de congés</li>
-                    <!--<li class="action__list__item">Demande de remplacement</li>-->
-                </ul>
+    <div class="routing__center">
+      <div class="action level1" id="generateActionsByRole"></div>
 
-                <ul class="action__list">
-                    <li class="action__list__item arrow hours">Demande d'heures supplémentaires</li>
-                    <li class="action__list__item arrow edit">Editer un planning</li>
-                </ul>
-            </div>
-
-            <!-- Repos -->
-            <div class="level2" id="rest">
-                <div class="action">
-                    <span class="action__info">Remarque : la date doit être identique</span>
-                    <ul class="action__list">
-                        <li class="action__list__item"><input type="datetime-local"></li>
-                        <li class="action__list__item"><input type="time"></li>
-                    </ul>
-                    <ul class="action__list">
-                        <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Congés -->
-            <div class="level2" id="leave">
-                <div class="action">
-                    <ul class="action__list">
-                        <li class="action__list__item"><input type="datetime-local"></li>
-                        <li class="action__list__item"><input type="datetime-local"></li>
-                    </ul>
-                    <ul class="action__list">
-                        <li class="action__list__item textarea"><textarea name="" id="" cols="30" rows="10" placeholder="Justification"></textarea></li>
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Heures supp -->
-            <div class="level2" id="hours">
-                <div class="action">
-                    <ul class="action__list">
-                        <li class="action__list__item">
-                            <select name="" id="">
-                                <option value="">Alexandre Simonin</option>
-                                <option value="">Jonathan Guillemot</option>
-                            </select>
-                        </li>
-                    </ul>
-                    <span class="action__info">Remarque : la date doit être identique</span>
-                    <ul class="action__list">
-                        <li class="action__list__item"><input type="date"></li>
-                        <li class="action__list__item"><input type="time"></li>
-                    </ul>
-                </div>
-            </div>
+      <!-- Repos -->
+      <div class="level2" id="rest">
+        <div class="action">
+          <form action="" class="form-add-rest">
+            <input type="hidden" value="rest" name="type">
+            <ul class="action__list">
+              <li class="action__list__item">
+                <span>Date : </span>
+                <input type="text" placeholder="JJ-MM-AAAA" class="actionDay">
+                <span class="error-msg"></span>
+              </li>
+              <li class="action__list__item">
+                <span>Heure de début : </span>
+                <input type="text" placeholder="HH:MM" class="startAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="start" value="" class="start">
+              </li>
+              <li class="action__list__item">
+                <span>Heure de fin : </span>
+                <input type="text" placeholder="HH:MM" class="endAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="end" value="" class="end">
+              </li>
+            </ul>
+            <span class="action__info">Veuillez respecter le bon format. (Format 24H)</span>
+            <span class="action__info">Par exemple pour le 1er Juillet 2018 : 01-01-2018</span>
+            <span class="action__info">Par exemple pour 9h30 : 09:30</span>
+            <ul class="action__list">
+              <li class="action__list__item textarea">
+                <textarea name="justification" cols="30" rows="10" placeholder="Justification (obligatoire)" class="justification"></textarea>
+                <span class="error-msg error-msg--top"></span>
+              </li>
+            </ul>
+            <input type="hidden" name="location" value="/">
+            <input type="submit" class="button button--small button--mg" value="Soumettre">
+          </form>
         </div>
-        <!-- /Page actions -->
+        <div class="title">Historique des demandes</div>
+        <table class="table list rest-list">
+          <thead>
+            <tr>
+              <th>Date soumission</th>
+              <th>M à j</th>
+              <th>Date</th>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Justification</th>
+              <th>Statut</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="no-result"></div>
+      </div>
 
-        <!-- Page profil -->
-        <div class="routing show" id="profile">
-            <header class="header">
-                <span class="icon icon-magnify jsSearch"></span>
-                <span class="icon icon-notification push jsNotifications"></span>
-                <h1 class="title">Votre profil</h1>
-            </header>
-
-            <div class="profile-page">
-                <span class="icon icon-profile"></span>
-                <div class="profile-page__name">Jonathan Guillemot</div>
-                <div class="profile-page__status">Salarié</div>
-            </div>
-
-            <div class="progress-bar">
-                <div class="progress-bar__top">
-                    <div class="progress-bar__title">Cette semaine</div>
-                    <div class="progress-bar__ratio"><span class="ratio-ok">14</span>/25<span>H</span></div>
-                </div>
-                <div class="progress-bar__bar">
-                    <div class="progress-bar__bar__text">56%</div>
-                    <div class="progress-bar__bar__wip" style="width: 56%;"><span>56%</span></div>
-                </div>
-            </div>
-            <div class="profile-page profile-page--dark">
-                <div class="profile-page__col">
-                    <div class="profile-page__col__nb profile-page__col__nb--ok">14</div><span>h</span>
-                    <div>effectuées</div>
-                </div>
-                <div class="profile-page__sep"></div>
-                <div class="profile-page__col">
-                    <div class="profile-page__col__nb profile-page__col__nb--no">11</div><span>h</span>
-                    <div>non validées</div>
-                </div>
-            </div>
-
-            <div class="progress-bar progress-bar--mg">
-                <div class="progress-bar__top">
-                    <div class="progress-bar__title">Total h. validées</div>
-                    <div class="progress-bar__ratio"><span class="ratio-ok">202</span>/1607<span>H</span></div>
-                </div>
-                <div class="progress-bar__bar">
-                    <div class="progress-bar__bar__text">13%</div>
-                    <div class="progress-bar__bar__wip" style="width: 13%;"><span>13%</span></div>
-                </div>
-            </div>
-            <div class="progress-bar progress-bar--mg">
-                <div class="progress-bar__top">
-                    <div class="progress-bar__title">Total h. planifiées</div>
-                    <div class="progress-bar__ratio"><span class="ratio-ok">283</span>/707<span>H</span></div>
-                </div>
-                <div class="progress-bar__bar">
-                    <div class="progress-bar__bar__text">40%</div>
-                    <div class="progress-bar__bar__wip" style="width: 40%;"><span>40%</span></div>
-                </div>
-            </div>
-
-            <div class="profile-page__info-hours profile-page__info-hours--mg">
-                <div class="profile-page__info-hours__title">Total H. supplémentaires</div>
-                <div class="profile-page__info-hours__nb">6<span>H</span></div>
-            </div>
-            <div class="profile-page__info-hours">
-                <div class="profile-page__info-hours__title">Repos compensatoire (h)</div>
-                <div class="profile-page__info-hours__nb">4,5<span>H</span></div>
-            </div>
-
-            <div class="button button--small button--icon button--red button--mg jsLogout"><span class="icon icon-logout"></span>Se déconnecter</div>
-
+      <!-- Congés -->
+      <div class="level2" id="leave">
+        <div class="action">
+          <form action="" class="form-add-leave">
+            <input type="hidden" value="leave" name="type">
+            <ul class="action__list">
+              <li class="action__list__item">
+                <span>Date de début : </span>
+                <input type="text" placeholder="JJ-MM-AAAA" class="startAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="start" class="start">
+              </li>
+              <li class="action__list__item">
+                <span>Date de fin (inclu) : </span>
+                <input type="text" placeholder="JJ-MM-AAAA" class="endAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="end" class="end">
+              </li>
+            </ul>
+            <span class="action__info">Veuillez respecter le bon format. Par exemple pour le 1er Juillet 2018 à 09 heures : 01-01-2018 09:00</span>
+            <ul class="action__list">
+              <li class="action__list__item textarea">
+                <textarea name="justification" cols="30" rows="10" placeholder="Justification" class="justification"></textarea>
+                <span class="error-msg error-msg--top"></span>
+              </li>
+            </ul>
+            <input type="hidden" name="location" value="/">
+            <input type="submit" class="button button--small button--mg" value="Soumettre">
+          </form>
         </div>
-        <!-- /Page profil -->
+        <div class="title">Historique des demandes</div>
+        <table class="table list leave-list">
+          <thead>
+            <tr>
+              <th>Date soumission</th>
+              <th>M à j</th>
+              <th>Date de début</th>
+              <th>Date de fin</th>
+              <th>Justification</th>
+              <th>Statut</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="no-result"></div>
+      </div>
 
-        <!-- Page recherche -->
-        <div class="search" id="jsSearch">
-            <div class="action">
-                <span class="action__info">Rechercher un salarié</span>
-                <ul class="action__list">
-                    <li class="action__list__item input">
-                        <input type="text" class="input-text" value="Jo">
-                    </li>
-                </ul>
-            </div>
+      <!-- Heures supp -->
+      <div class="level2" id="hours">
+        <div class="action">
+          <form action="" class="form-add-hours">
+            <input type="hidden" value="hours" name="type">
+            <ul class="action__list">
+              <li class="action__list__item">
+                <span>Assigné à : </span>
+                <select name="recipient" id="jsEmployeesList"></select>
+              </li>
+            </ul>
+            <ul class="action__list">
+              <li class="action__list__item">
+                <span>Date : </span>
+                <input type="text" placeholder="JJ-MM-AAAA" class="actionDay">
+                <span class="error-msg"></span>
+              </li>
+              <li class="action__list__item">
+                <span>Heure de début : </span>
+                <input type="text" placeholder="HH:MM" class="startAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="start" value="" class="start">
+              </li>
+              <li class="action__list__item">
+                <span>Heure de fin : </span>
+                <input type="text" placeholder="HH:MM" class="endAction">
+                <span class="error-msg"></span>
+                <input type="hidden" name="end" value="" class="end">
+              </li>
+            </ul>
+            <ul class="action__list">
+              <li class="action__list__item">
+                <span>Titre : </span>
+                <input type="text" name="justification" placeholder="Entrez ici la tâche à faire en heure supplémentaire" class="justification">
+                <span class="error-msg"></span>
+              </li>
+              <li class="action__list__item">
+                <span>Lieu : </span>
+                <input type="text" name="location" placeholder="Entrez ici le lieu de l'heure supplémentaire" class="location">
+                <span class="error-msg"></span>
+              </li>
+            </ul>
+            <span class="action__info">Veuillez respecter le bon format. (Format 24H)</span>
+            <span class="action__info">Par exemple pour le 1er Juillet 2018 : 01-01-2018</span>
+            <span class="action__info">Par exemple pour 9h30 : 09:30</span>
+            <input type="submit" class="button button--small button--mg" value="Soumettre">
+          </form>
+        </div>
+        <div class="title">Historique des demandes</div>
+        <table class="table list hours-list">
+          <thead>
+            <tr>
+              <th>Date soumission</th>
+              <th>M à j</th>
+              <th>Date</th>
+              <th>Début</th>
+              <th>Fin</th>
+              <th>Assigné</th>
+              <th>Statut</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="no-result"></div>
+      </div>
 
-            <ul class="search__list">
+      <!-- Edit planning -->
+      <div class="level2 generic-planning" id="editPlanning">
+        <div class="action">
+          <select class="selectUserToEditPlanning"></select>
+          <div class="calendar-navigation">
+            <button class="calendar-navigation-prev">
+              <span class="icon icon-left-arrow"></span>Précédent</button>
+            <button class="calendar-navigation-next">Suivant
+              <span class="icon icon-right-arrow"></span>
+            </button>
+          </div>
+          <div class="calendar-edit"></div>
+          <div class="calendar-add"></div>
+          <div id="calendar-edit"></div>
+        </div>
+      </div>
+
+      <!-- User -->
+      <div class="level2" id="addUser">
+        <div class="action">
+          <div class="button button--add" id="jsFormAddUser">+ Ajouter</div>
+          <div class="button button--add" id="jsCloseFormAddUser">- Fermer</div>
+          <form action="" class="form form--add jsFormAddUser">
+            <span class="action__info action__info--left">Général</span>
+            <ul class="action__list">
+              <li class="action__list__item input">
+                <input type="text" name="firstname" class="input-text" placeholder="Prénom">
+              </li>
+              <li class="action__list__item input">
+                <input type="text" name="lastname" class="input-text" placeholder="Nom">
+              </li>
+              <li class="action__list__item input">
+                <input type="text" name="username" class="input-text" placeholder="Nom d'utilisateur">
+              </li>
+              <li class="action__list__item input">
+                <input type="password" name="plain_password" class="input-text" placeholder="Mot de passe">
+              </li>
+              <li class="action__list__item input">
+                <input type="password" name="confirm_password" class="input-text" placeholder="Confirmer le mot de passe">
+              </li>
+              <li class="action__list__item input">
+                <input type="text" name="hours_todo" class="input-text" placeholder="Nombre d'heures à faire (total annuel)">
+              </li>
+            </ul>
+            <span class="action__info action__info--left">Rôle</span>
+            <ul class="action__list">
+              <li class="action__list__item">
+                <select name="role" id="roleList"></select>
+              </li>
+            </ul>
+            <!-- <span class="action__info action__info--left">Droits</span> -->
+            <ul class="action__list">
+              <li class="action__list__item list"></li>
+            </ul>
+            <span class="action__info action__info--left">Supérieur en charge</span>
+            <ul class="action__list">
+              <li class="action__list__item input">
+                <input type="text" name="superior" class="input-text" placeholder="Entrer l'identifiant de l'utilisateur">
+              </li>
+            </ul>
+            <input type="submit" class="button button--small button--mg" value="Ajouter">
+          </form>
+        </div>
+        <div class="title">Liste des utilisateurs</div>
+        <table class="table list user-list">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Prénom</th>
+              <th>Nom</th>
+              <th>Nom utilisateur</th>
+              <th>Rôle</th>
+              <th>Supérieur (Id)</th>
+              <th>Heures planifiées</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+
+      <!-- Access -->
+      <div class="level2" id="addAccess">
+        <div class="action">
+          <form action="" class="jsFormAddAccess">
+            <ul class="action__list">
+              <li class="action__list__item input">
+                <input type="text" name="title" class="input-text" placeholder="Nouveau droit">
+              </li>
+              <li class="action__list__item input">
+                <input type="text" name="slug" class="input-text" placeholder="Identifiant, en minuscuse, sans accent et sans espaces">
+              </li>
+            </ul>
+            <span class="action__info">Attention : l'identifiant est unique et ne pourra pas être modifié !</span>
+            <input type="submit" class="button button--small button--mg" value="Ajouter">
+          </form>
+        </div>
+        <div class="title">Liste des droits</div>
+        <ul class="list access-list"></ul>
+      </div>
+
+      <!-- Section -->
+      <div class="level2" id="addSection">
+        <div class="action">
+          <form action="" class="jsFormAddSection">
+            <ul class="action__list">
+              <li class="action__list__item input">
+                <input type="text" name="name" class="input-text" placeholder="Nouvelle section">
+              </li>
+            </ul>
+            <input type="submit" class="button button--small button--mg" value="Ajouter">
+          </form>
+        </div>
+        <div class="title">Liste des sections</div>
+        <ul class="list section-list"></ul>
+        <div class="no-result"></div>
+      </div>
+
+      <!-- Semaine -->
+      <div class="level2" id="addWeek">
+        <div class="action">
+          <form action="" class="jsFormAddWeek">
+            <ul class="action__list">
+              <li class="action__list__item">
+                  <span>Pour le salarié</span><select class="jsUsersList" id="selectUserIDForAdd" name="user"></select>
+              </li>
+              <li class="action__list__item">
+                  <span>Attribuer le type</span><select class="jsWeeksTypeList" name="setting"></select>
+              </li>
+              <li class="action__list__item">
+                  <span>Répéter de la semaine</span>
+                  <input type="number" min="1" max="52" name="from">
+              </li>
+              <span></span>
+              <li class="action__list__item">
+                  <span>à la semaine</span>
+                  <input type="number" min="1" max="52" name="to">
+                  <span>(incluse)</span>
+              </li>
+            </ul>
+            <span class="action__info">Si vous ne souhaitez rentrer qu'une seule semaine, mettez le même numéro dans le 2e champs</span>
+            <input type="submit" class="button button--small button--mg" value="Ajouter">
+          </form>
+        </div>
+        <div class="title">Répartition des semaines<select class="jsUsersList" id="selectUserIDForShow"></select></div>
+        <table class="table list week-list">
+          <thead>
+            <tr>
+              <th>Numéro de la semaine</th>
+              <th>Type de semaine</th>
+              <th class="action">Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="no-result"></div>
+      </div>
+
+      <!-- Setting -->
+      <div class="level2" id="addSetting">
+        <div class="action">
+          <!--<form action="" class="jsFormAddSetting">-->
+          <!--<ul class="action__list">-->
+          <!--<li class="action__list__item input">-->
+          <!--<input type="text" class="input-text" placeholder="Nom du réglage">-->
+          <!--</li>-->
+          <!--<li class="action__list__item input">-->
+          <!--<input type="text" class="input-text" placeholder="Valeur du réglage">-->
+          <!--</li>-->
+          <!--<li class="action__list__item">-->
+          <!--<input type="checkbox" id="is_int" value="nb"><label for="is_int">Cocher si la valeur est un nombre</label>-->
+          <!--</li>-->
+          <!--</ul>-->
+          <!--<input type="submit" class="button button&#45;&#45;small button&#45;&#45;mg" value="Ajouter">-->
+          <!--</form>-->
+        </div>
+        <div class="title">Liste des réglages</div>
+        <ul class="list setting-list"></ul>
+      </div>
+    </div>
+  </div>
+  <!-- /Page actions -->
+
+  <!-- Page profil -->
+  <div class="routing" id="profile">
+    <header class="header">
+      <div class="header__link header__link--icon jsRefreshProfile">Rafraichir</div>
+      <h1 class="title">Mon profil</h1>
+    </header>
+
+    <div class="routing__center">
+
+      <div class="profile-page profile-page--recap">
+        <span class="icon icon-profile"></span>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Prénom: </span>
+          <span id="profile-firstname"></span>
+        </div>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Nom: </span>
+          <span id="profile-lastname"></span>
+        </div>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Identifiant: </span>
+          <span id="profile-username"></span>
+        </div>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Rôle: </span>
+          <span id="profile-role"></span>
+        </div>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Supérieur: </span>
+          <span id="profile-superior"></span>
+        </div>
+        <div class="profile-page__edit__text">
+          <span class="profile-page__edit__span">Liste des accès: </span>
+          <span id="profile-access"></span>
+        </div>
+        <div class="profile-page__edit__text profile-page__edit__text--update-pwd">
+          <span class="profile-page__edit__span" id="profile-update-password">Modifier mon mot de passe</span>
+          <span class="profile-page__edit__span" id="profile-cancel-password">Annuler</span>
+          <div class="container-update-pwd">
+            <input type="password" name="previous_password" id="previous_password" placeholder="Ancien mot de passe">
+            <input type="password" name="plain_password" id="new_password" placeholder="Nouveau mot de passe">
+            <input type="password" name="confirm_password" id="confirm_new_password" placeholder="Confirmer nouveau mot de passe">
+            <div class="button button--small button--mg" id="jsUpdatePassword">Confirmer</div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="h2">Mes heures validées</h2>
+      <div class="progress-bar" id="jsHoursTodoThisWeek">
+        <div class="progress-bar__top">
+          <div class="progress-bar__title">Cette semaine</div>
+          <div class="progress-bar__ratio"></div>
+        </div>
+        <div class="progress-bar__bar">
+          <div class="progress-bar__bar__text"></div>
+          <div class="progress-bar__bar__wip" style="width: 0;">
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-page profile-page--dark">
+        <div class="profile-page__col">
+          <div class="profile-page__col__nb profile-page__col__nb--ok" id="validedHours"></div>
+          <span>h</span>
+          <div>validées</div>
+        </div>
+        <div class="profile-page__sep"></div>
+        <div class="profile-page__col">
+          <div class="profile-page__col__nb profile-page__col__nb--no" id="notValidedHours"></div>
+          <span>h</span>
+          <div>en attente de validation</div>
+        </div>
+      </div>
+
+      <div class="progress-bar progress-bar--mg" id="jsHoursTodo">
+        <div class="progress-bar__top">
+          <div class="progress-bar__title">Cette année</div>
+          <div class="progress-bar__ratio"></div>
+        </div>
+        <div class="progress-bar__bar">
+          <div class="progress-bar__bar__text"></div>
+          <div class="progress-bar__bar__wip" style="width: 0;">
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="h2">Mes heures planifiées</h2>
+      <div class="progress-bar" id="jsHoursPlanified">
+        <div class="progress-bar__top">
+          <div class="progress-bar__title">Cette année</div>
+          <div class="progress-bar__ratio"></div>
+        </div>
+        <div class="progress-bar__bar">
+          <div class="progress-bar__bar__text"></div>
+          <div class="progress-bar__bar__wip" style="width: 0;">
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="profile-page__info-hours profile-page__info-hours--mg">
+                    <div class="profile-page__info-hours__title">Total H. supplémentaires</div>
+                    <div class="profile-page__info-hours__nb">6<span>H</span></div>
+                </div> -->
+      <h2 class="h2">Mes heures supplémentaires récompensées</h2>
+      <div class="profile-page__info-hours">
+        <div class="profile-page__info-hours__title">Repos compensatoire obtenu</div>
+        <div class="profile-page__info-hours__nb"></div>
+      </div>
+
+    </div>
+
+    <!--<div class="button button&#45;&#45;small button&#45;&#45;icon button&#45;&#45;red button&#45;&#45;mg jsLogout"><span class="icon icon-logout"></span>Se déconnecter</div>-->
+
+  </div>
+  <!-- /Page profil -->
+
+  <!-- Page recherche -->
+  <div class="search" id="jsSearch">
+    <header class="header">
+      <h1 class="title">Rechercher un salarié</h1>
+    </header>
+    <div class="action">
+      <ul class="action__list">
+        <li class="action__list__item input">
+          <!-- <form method="GET" action="http://127.0.0.1:8000/search" id="searchForm"> -->
+          <form>
+            <input type="text" class="input-text" id="jsSearchUser" name="search" placeholder="Rechercher un utilisateur" autocomplete="off">
+          </form>
+        </li>
+      </ul>
+    </div>
+    <!-- <ul class="search__list">
                 <li class="search__list__item">Jonathan Guillemot</li>
                 <li class="search__list__item">Jordan Martin</li>
-            </ul>
-        </div>
-        <!-- /Page recherche -->
+            </ul> -->
+  </div>
+  <!-- /Page recherche -->
 
-        <!-- Page notification -->
-        <div class="notification" id="jsNotifications">
-            <div class="notification__wait">3 en attente de traitement</div>
-            <ul class="notification__list">
-                <li class="notification__list__item">
-                    <div class="notification__author">De Alexandre Simonin</div>
-                    <div>Demande de repos compensatoire</div>
-                    <div>Le 03/04/2018 de 08h00 à 17h00</div>
-                    <div class="notification__justification">Ayant atteint 12 heures supplémentaires, je souhaiterais prendre un repos compensatoire ce mardi 3 avril. Je vous remercie par avance.</div>
-                    <div class="options">
-                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
-                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
-                    </div>
-                </li>
+  <!-- Page notification -->
+  <div class="notification" id="jsNotifications">
+    <div class="notification__wait"></div>
+    <ul class="notification__list"></ul>
+  </div>
+  <!-- /Page notification -->
 
-                <li class="notification__list__item">
-                    <div class="notification__author">De Jonathan Guillemot</div>
-                    <div>Demande d'heures supplémentaires : 2h</div>
-                    <div>Le 22/02/2018 de 14h00 à 16h00</div>
-                    <div class="notification__motivation">
-                        Acceptez ! <br>
-                        Les heures supplémentaires vous seront bientôt récompensées par un repos compensatoire !</div>
-                    <div class="options">
-                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
-                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
-                    </div>
-                </li>
+  <div class="tab-bar">
+    <div class="tab-bar__overlay"></div>
+    <div class="tab-bar__item logout jsLogout">
+      <div>
+        <div class="icon icon-logout"></div>
+        <div class="tab-bar__item__text">Déconnexion</div>
+      </div>
+    </div>
+    <div class="tab-bar__item jsNotifications">
+      <div>
+        <div class="icon icon-notification"></div>
+        <div id="push"></div>
+        <div class="tab-bar__item__text">Notifications</div>
+      </div>
+    </div>
+    <div class="tab-bar__item planning current" data-routing="planning">
+      <div>
+        <div class="icon icon-calendar"></div>
+        <div class="tab-bar__item__text">Planning</div>
+      </div>
+    </div>
+    <div class="tab-bar__item validation" data-routing="validation">
+      <div>
+        <div class="icon icon-list"></div>
+        <div class="tab-bar__item__text">Validations</div>
+      </div>
+    </div>
+    <div class="tab-bar__item actions" data-routing="actions">
+      <div>
+        <div class="icon icon-flash"></div>
+        <div class="tab-bar__item__text">Actions</div>
+      </div>
+    </div>
+    <div class="tab-bar__item profile" data-routing="profile">
+      <div>
+        <div class="icon icon-profile"></div>
+        <div class="tab-bar__item__text">Profil</div>
+      </div>
+    </div>
+    <div class="tab-bar__item jsSearch">
+      <div>
+        <div class="icon icon-magnify"></div>
+        <div class="tab-bar__item__text">Recherche</div>
+      </div>
+    </div>
+  </div>
 
-                <li class="notification__list__item">
-                    <div class="notification__author">De Alexandre Simonin</div>
-                    <div>Demande de congés</div>
-                    <div>Du 07/05/2018 au 11/05/2018</div>
-                    <div class="options">
-                        <div class="options__inner options__inner--approve jsApproveAction"><span>Accepter</span></div>
-                        <div class="options__inner options__inner--decline jsADeclineAction"><span>Décliner</span></div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <!-- /Page notification -->
+  <!--<script type="text/javascript" src="cordova.js"></script>-->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="dist/js/externals/moment.min.js"></script>
+  <script type="text/javascript" src="dist/js/externals/fullcalendar.min.js"></script>
+  <script type="text/javascript" src="dist/js/externals/fr.js"></script>
+  <script type="text/javascript" src="dist/js/app.js"></script>
+</body>
 
-
-        <div class="tab-bar">
-            <div class="tab-bar__item planning" data-routing="planning">
-                <div class="icon icon-calendar"></div>
-                <div class="tab-bar__item__text">Planning</div>
-            </div>
-            <div class="tab-bar__item validation" data-routing="validation">
-                <div class="icon icon-list"></div>
-                <div class="tab-bar__item__text">Validations</div>
-            </div>
-            <div class="tab-bar__item actions" data-routing="actions">
-                <div class="icon icon-flash"></div>
-                <div class="tab-bar__item__text">Actions</div>
-            </div>
-            <div class="tab-bar__item profile current" data-routing="profile">
-                <div class="icon icon-profile"></div>
-                <div class="tab-bar__item__text">Profil</div>
-            </div>
-        </div>
-
-        <!--<script type="text/javascript" src="cordova.js"></script>-->
-        <script
-          src="https://code.jquery.com/jquery-3.3.1.min.js"
-          integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-          crossorigin="anonymous"></script>
-        <script type="text/javascript" src="dist/js/app.js"></script>
-    </body>
 </html>
