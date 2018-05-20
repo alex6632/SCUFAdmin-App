@@ -11,3 +11,16 @@ body {
   width: 100%;
   overflow: hidden;
 }
+
+.no-result {
+  text-align: center;
+  font-size: 15px;
+  margin-top: 25px;
+}
+
+.success {
+  display: block;
+  margin: 40px auto 0 auto;
+  font-size: 22px;
+  text-align: center;
+}

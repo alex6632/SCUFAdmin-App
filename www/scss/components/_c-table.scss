@@ -1,0 +1,132 @@
+// _c-table.scss
+
+.table {
+  width: 100%;
+
+  thead {
+    background-color: color('background', 'invert');
+    color: color('foreground', 'invert');
+    tr {
+      th {
+        text-align: left;
+        padding: 5px 10px;
+        font-weight: 300;
+
+        &.action {
+          width: 130px;
+        }
+      }
+    }
+  }
+  tbody {
+    .tr {
+      display: table-row;
+    }
+    .td {
+      display: table-cell;
+
+      &--created {
+        min-width: 180px;
+      }
+      &--updated {
+        min-width: 100px;
+      }
+      &--justification {
+        max-width: 400px;
+      }
+      &--status {
+        min-width: 100px;
+
+        span {
+          &::before {
+            display: inline-block;
+            content: '';
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            margin-right: 5px;
+          }
+
+
+          &.refused::before {
+            background-color: color('validation', 'no');
+          }
+          &.accepted::before {
+            background-color: color('validation', 'ok');
+          }
+          &.progress::before {
+            background-color: color('validation', 'progress');
+          }
+        }
+      }
+    }
+    tr, .tr {
+      &:nth-child(odd) {
+        background-color: rgba(color('validation','stop'),.1);
+      }
+      td, .td {
+        padding: 5px 10px;
+
+        &.description {
+          max-width: 400px;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+        }
+
+        &.url {
+          a {
+            text-transform: none;
+          }
+        }
+
+        img {
+          display: block;
+          max-width: 100px;
+          max-height: 60px;
+          margin: auto;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+          width: 70px;
+
+          &:disabled {
+            border: 0;
+            background: transparent;
+            font-size: 12px;
+            color: color('foreground');
+            padding: 0;
+            -webkit-appearance: none;
+          }
+        }
+        select {
+          width: 100%;
+        }
+
+        .link-table {
+          font-size: 11px;
+          color: blue;
+          text-decoration: underline;
+          text-transform: uppercase;
+          margin: 0 5px;
+          cursor: pointer;
+
+          //&:first-child {
+          //  float: left;
+          //}
+          //&:last-child {
+          //  float: right;
+          //}
+
+          &.no-float {
+            display: block;
+            float: none;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
+}

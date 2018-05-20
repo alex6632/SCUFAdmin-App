@@ -1,22 +1,88 @@
 // _m-profile.scss
 
 .profile-page {
-  text-align: center;
-  margin-top: 20px;
+  position: relative;
+  margin: 20px 0;
+  background-color: color('background', 'invert');
+  padding: 25px 0 25px 50px;
+  color: color('foreground', 'invert');
+  
+  &--recap {
+    width: 50%;
+    min-width: 600px;
+    border: solid 2px color('primary');
+    font-size: 14px;
+  }
 
   &--dark {
     display: flex;
     justify-content: space-around;
     align-items: center;
     position: relative;
-    margin: 0 0 20px 0;
+    margin: 0 0 40px 0;
     background-color: color('background', 'invert');
     color: color('foreground', 'invert');
     overflow: hidden;
   }
 
+  &__edit {
+
+    &__text {
+      display: block;
+      overflow: hidden;
+      margin: 4px 0;
+
+      &--update-pwd {
+        .container-update-pwd {
+          margin-top: 10px;
+          width: 250px;
+        }
+        input {
+          display: block;
+          margin: 3px 0;
+          width: 100%;
+          height: 18px;
+          padding: 10px;
+        }
+        .button {
+          margin: 10px auto 0 auto;
+          max-width: initial;
+          cursor: pointer;
+        }
+      }
+    }
+
+    &__span {
+      font-style: italic;
+      float: left;
+      width: 140px;
+
+      &#profile-update-password,
+      &#profile-cancel-password {
+        display: block;
+        float: none;
+        color: color('primary');
+        text-decoration: underline;
+        width: auto;
+        cursor: pointer;
+
+        & + div {
+          display: none;
+        }
+      }
+      &#profile-cancel-password {
+        display: none;
+      }
+    }
+  }
+
   .icon {
-    font-size: 35px;
+    font-size: 50px;
+    @include center-v(absolute);
+    right: 50px;
+    border: 1px solid color('background');
+    border-radius: 50%;
+    padding: 30px;
   }
   &__name {
     font-weight: 700;
@@ -62,7 +128,7 @@
     font-size: 14px;
     text-transform: uppercase;
     height: 40px;
-    margin: 5px 0;
+    margin: 10px 0;
 
     &--mg {
       margin-top: 25px;
