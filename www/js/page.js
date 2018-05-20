@@ -361,7 +361,7 @@ var page = {
       },
       success: function (response) {
         if (response > 0) {
-          $('.jsNotifications').find('#push').html('<div class="push">' + response + '</div>');
+          $('.jsNotifications').find('#push').html('<div class="push"></div>');
         }
       },
       error: function (response) {
@@ -547,6 +547,10 @@ var page = {
 
           let html = '' +
           '<header class="header">' +
+            '<div class="header__link header__link--icon jsNotifications">' +
+              '<div id="push"></div>' +
+              '<span class="icon icon-notification push"></span>' +
+            '</div>' +
             '<h1 class="title">Validation</h1>' +
           '</header>' +
           '<h2 class="header-lvl2">' +
@@ -559,6 +563,10 @@ var page = {
 
           let html = '' +
             '<header class="header">' +
+              '<div class="header__link header__link--icon jsNotifications">' +
+                '<div id="push"></div>' +
+                '<span class="icon icon-notification push"></span>' +
+              '</div>' +
               '<h1 class="title">Validation</h1>' +
             '</header>' +
 

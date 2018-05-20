@@ -16,6 +16,7 @@ var anim = {
         roleList += '<option value="4">Administrateur</option>' +
         '<option value="3">Superviseur</option>';
       }
+      $('#roleList option').remove();
       $('#roleList').append(roleList);
     });
     $('#jsCloseFormAddUser').on('click', function () {
@@ -26,28 +27,18 @@ var anim = {
     })
   },
 
-  fadeInPage: function (element, authTokenVALUE, userID) {
-    $('.' + element).on('click', function () {
-      $(this).toggleClass('current');
-      utils.removeHTML();
-
-      var elementToShow = $('#' + element);
-      if (elementToShow.css('display') == 'none') {
-        elementToShow.fadeIn();
-        $('.tab-bar__overlay').fadeIn();
-        if (element == "jsNotifications") {
-          page.notifications(authTokenVALUE, userID);
-          page.declineNotification(authTokenVALUE, userID);
-          calendar.addEventFromNotification(authTokenVALUE, userID);
-        }
-      } else {
-        elementToShow.fadeOut();
-        $('.tab-bar__overlay').fadeOut();
-        if (element == "jsNotifications") {
-          utils.removeHTML("notifications");
-        }
-      }
-
+  fadeInPage: function (authTokenVALUE, userID) {
+    $('.routing').on('click', '.jsNotifications', function () {
+      $('#jsNotifications').fadeIn();
+      page.notifications(authTokenVALUE, userID);
+      page.declineNotification(authTokenVALUE, userID);
+      calendar.addEventFromNotification(authTokenVALUE, userID);
+    })
+    $('.notification__close').click(function() {
+      $('#jsNotifications').fadeOut();
+      utils.removeHTML("notifications");
+      $('.notification__list').off('click', '.jsApproveAction');
+      $('.notification__list').off('click', '.jsADeclineAction');
     })
   },
 
@@ -67,28 +58,20 @@ var anim = {
     var ts;
     var el = $('.' + element);
     el.on('touchstart', '.notification__list__item', function (e) {
-      ts = e.originalEvent.touches[0].clientX;
+      if ($(this).hasClass('not-seen')) {
+        ts = e.originalEvent.touches[0].clientX;
+      }
     });
 
     el.on('touchend', '.notification__list__item', function (e) {
-      var te = e.originalEvent.changedTouches[0].clientX;
-      if (ts > te + 5) {
-        $('.notification__list__item').removeClass('swipe');
-        $(this).addClass('swipe');
-      } else if (ts < te - 5) {
-        $(this).removeClass('swipe');
-      }
-    });
-  },
-
-  swipeDesktop: function (element) {
-    var el = $('.' + element);
-    el.on('click', '.notification__list__item', function (e) {
       if ($(this).hasClass('not-seen')) {
-        if (!$(this).hasClass('swipe')) {
+        var te = e.originalEvent.changedTouches[0].clientX;
+        if (ts > te + 5) {
           $('.notification__list__item').removeClass('swipe');
+          $(this).addClass('swipe');
+        } else if (ts < te - 5) {
+          $(this).removeClass('swipe');
         }
-        $(this).toggleClass('swipe');
       }
     });
   },

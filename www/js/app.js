@@ -32,19 +32,18 @@ var me = {
       logout.ajaxLogout(authTokenVALUE, authTokenID);
 
       // ROUTING
-      routing.level1('planning', authTokenVALUE);
-      routing.level1('validation', authTokenVALUE);
-      routing.level1('actions', authTokenVALUE);
-      routing.level1('profile', authTokenVALUE);
+      routing.level1('planning', authTokenVALUE, ROLE);
+      routing.level1('validation', authTokenVALUE, ROLE);
+      routing.level1('actions', authTokenVALUE, ROLE);
+      routing.level1('profile', authTokenVALUE, ROLE);
       routing.level2(authTokenVALUE, userID, ROLE);
 
       // SPECIAL PAGES
-      anim.fadeInPage('jsNotifications', authTokenVALUE, userID);
-      anim.fadeInPage('jsSearch', authTokenVALUE, userID);
+      anim.fadeInPage(authTokenVALUE, userID);
 
       // OTHER EVENTS
       //anim.swipe('notification__list');
-      anim.swipeDesktop('notification__list');
+      anim.swipe('notification__list');
       anim.progressBar();
 
       // SHOW ADD FORM

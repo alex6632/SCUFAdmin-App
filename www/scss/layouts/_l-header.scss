@@ -33,6 +33,33 @@
     &--icon {
       opacity: 1; 
 
+      &.jsNotifications {
+        left: auto;
+        right: 20px;
+
+        #push {
+          position: absolute;
+          top: 8px;
+          right: -2px;
+
+          .push {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: color('validation', 'no');
+          }
+        }
+      }
+
+      .icon-notification {
+        font-size: 20px;
+        line-height: 43px;
+      }
+      .icon-loading {
+        font-size: 25px;
+        line-height: 40px;
+      }
+
       &::before {
         display: none;
       }

@@ -31,14 +31,25 @@
   <!-- Page planning -->
   <div class="routing generic-planning show" id="planning">
     <header class="header">
-      <div class="header__link header__link--refresh jsRefreshPlanning"></div>
+      <div class="header__link header__link--icon jsRefreshPlanning">
+        <span class="icon icon-loading"></span>
+      </div>
+      <!-- <div class="header__link header__link--refresh jsRefreshPlanning"></div> -->
+      <div class="header__link header__link--icon jsNotifications">
+        <div id="push"></div>
+        <span class="icon icon-notification push"></span>
+      </div>
       <h1 class="title">Planning</h1>
       <!-- <div class="icon incon-setting calendar-view-trigger"></div> -->
-      
+
     </header>
     <div class="calendar-navigation">
-      <button class="calendar-navigation-prev"><span class="icon icon-left-arrow"></span></button>
-      <button class="calendar-navigation-next"><span class="icon icon-right-arrow"></span></button>
+      <button class="calendar-navigation-prev">
+        <span class="icon icon-left-arrow"></span>
+      </button>
+      <button class="calendar-navigation-next">
+        <span class="icon icon-right-arrow"></span>
+      </button>
     </div>
     <div class="calendar-edit"></div>
     <div class="calendar-add"></div>
@@ -56,6 +67,10 @@
   <div class="routing" id="actions">
     <header class="header">
       <div class="header__link jsGoLevel1"></div>
+      <div class="header__link header__link--icon jsNotifications">
+        <div id="push"></div>
+        <span class="icon icon-notification push"></span>
+      </div>
       <h1 class="title">Actions
         <span>&nbsp;</span>
       </h1>
@@ -246,15 +261,19 @@
         <div class="action">
           <select class="selectUserToEditPlanning"></select>
           <div class="calendar-navigation">
-            <button class="calendar-navigation-prev"><span class="icon icon-left-arrow"></span></button>
-            <button class="calendar-navigation-next"><span class="icon icon-right-arrow"></span></button>
+            <button class="calendar-navigation-prev">
+              <span class="icon icon-left-arrow"></span>
+            </button>
+            <button class="calendar-navigation-next">
+              <span class="icon icon-right-arrow"></span>
+            </button>
           </div>
           <div class="calendar-edit"></div>
           <div class="calendar-add"></div>
           <div id="calendar-edit"></div>
         </div>
       </div>
-      
+
     </div>
   </div>
   <!-- /Page actions -->
@@ -262,7 +281,13 @@
   <!-- Page profil -->
   <div class="routing" id="profile">
     <header class="header">
-      <div class="header__link header__link--icon jsRefreshProfile">Rafraichir</div>
+      <div class="header__link header__link--icon jsRefreshProfile">
+        <span class="icon icon-loading"></span>
+      </div>
+      <div class="header__link header__link--icon jsNotifications">
+        <div id="push"></div>
+        <span class="icon icon-notification push"></span>
+      </div>
       <h1 class="title">Mon profil</h1>
     </header>
 
@@ -371,7 +396,8 @@
         <div class="profile-page__info-hours__nb"></div>
       </div>
 
-      <div class="button button--small button--icon button--red button--mg jsLogout"><span class="icon icon-logout"></span>Se déconnecter</div>
+      <div class="button button--small button--icon button--red button--mg jsLogout">
+        <span class="icon icon-logout"></span>Se déconnecter</div>
 
     </div>
 
@@ -402,10 +428,11 @@
   </div>
   <!-- /Page recherche -->
 
-  <!-- Page notification -->
+  <!-- Page notifica<div class="header__link header__link--icon">tion --></div>
   <div class="notification" id="jsNotifications">
     <div class="notification__wait"></div>
     <ul class="notification__list"></ul>
+    <div class="notification__close">Fermer</div>
   </div>
   <!-- /Page notification -->
 

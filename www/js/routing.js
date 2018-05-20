@@ -6,7 +6,7 @@ var routing = {
    * - Actions
    * - Profil
    */
-  level1: function (element, authTokenVALUE) {
+  level1: function (element, authTokenVALUE, ROLE) {
     $('.' + element).on('click', function () {
       if (utils.isValidToken()) {
         var userID = localStorage.getItem('userID');
@@ -30,7 +30,7 @@ var routing = {
     
             break;
           case "planning":
-            calendar.init(authTokenVALUE, userID, 'calendar');
+            calendar.init(authTokenVALUE, userID, 'calendar', ROLE);
             $('#calendar').fullCalendar('refetchEvents');
             break;
           case "validation":

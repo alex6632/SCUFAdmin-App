@@ -3,9 +3,9 @@ var crud = {
    * ADD AN ELEMENT
    */
   ajaxAdd: function (element, type, authTokenVALUE, ROLE = null) {
-    $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
     $('.' + element).on('submit', function (e) {
       e.preventDefault();
+      $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
       $('form.' + element + ' button').prop("disabled", true);
       var api = localStorage.getItem('ENV') + "/" + type + "/create";
       $.ajax({
@@ -362,6 +362,13 @@ var crud = {
       $(this).parents('form').find('.edit').removeClass('show');
       $(this).parents('form').find('.editEnabled').removeClass('hide');
       $(this).parent().find('.delete').removeClass('hide');
+      if(type == 'user') {
+        utils.removeHTML("level2User");
+        crud.ajaxSimpleList(localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
+      } else {
+        utils.removeHTML("level2Week");
+        crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+      }
     });
     $(element).on('click', 'form .edit', function () {
       $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
@@ -443,6 +450,9 @@ var crud = {
                   $(element + '' + response.id).parents('#formRest' + response.id).remove();
                   break;
                 case "hours":
+                  $('.msg-flash .alert').remove();
+                  $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
+                  $(element + '' + response.id).parents('#formHours' + response.id).remove();
                   break;
               }
             } else {
@@ -571,28 +581,33 @@ var crud = {
           },
           success: function (response) {
             $('#actions .loader').remove();
-            switch (type) {
-              case "leave":
-                utils.removeHTML("level2Leave");
-                $('.msg-flash .alert').remove();
-                $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
-                utils.emptyForm('leave');
-                break;
-              case "rest":
-                utils.removeHTML("level2Rest");
-                $('.msg-flash .alert').remove();
-                $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
-                utils.emptyForm('rest');
-                break;
-              case "hours":
-                utils.removeHTML("level2Hours");
-                $('.msg-flash .alert').remove();
-                $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
-                utils.emptyForm('hours');
-                break;
+            if(response.type == 'success') {
+              switch (type) {
+                case "leave":
+                  utils.removeHTML("level2Leave");
+                  $('.msg-flash .alert').remove();
+                  $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
+                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
+                  utils.emptyForm('leave');
+                  break;
+                case "rest":
+                  utils.removeHTML("level2Rest");
+                  $('.msg-flash .alert').remove();
+                  $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
+                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
+                  utils.emptyForm('rest');
+                  break;
+                case "hours":
+                  utils.removeHTML("level2Hours");
+                  $('.msg-flash .alert').remove();
+                  $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
+                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
+                  utils.emptyForm('hours');
+                  break;
+              }
+            } else {
+              $('.msg-flash .alert').remove();
+              $('.msg-flash').append('<div class="alert alert--error" role="alert">' + response.message + '</div>');  
             }
           },
           error: function (response) {

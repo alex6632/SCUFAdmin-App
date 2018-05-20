@@ -1,3 +1,6 @@
+$icon-info: "\e90e";
+$icon-loading: "\e90c";
+$icon-tools: "\e90d";
 $icon-left-arrow: "\e90b";
 $icon-calendar: "\e900";
 $icon-lock: "\e901";
@@ -13,11 +16,11 @@ $icon-valid: "\e90a";
 
 @font-face {
   font-family: 'icon-scuf';
-  src:  url('#{$icomoon-font-path}/icon-scuf.eot?1x2tqt');
-  src:  url('#{$icomoon-font-path}/icon-scuf.eot?1x2tqt#iefix') format('embedded-opentype'),
-  url('#{$icomoon-font-path}/icon-scuf.ttf?1x2tqt') format('truetype'),
-  url('#{$icomoon-font-path}/icon-scuf.woff?1x2tqt') format('woff'),
-  url('#{$icomoon-font-path}/icon-scuf.svg?1x2tqt#icon-scuf') format('svg');
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?dmtxeh');
+  src:  url('#{$icomoon-font-path}/icon-scuf.eot?dmtxeh#iefix') format('embedded-opentype'),
+    url('#{$icomoon-font-path}/icon-scuf.ttf?dmtxeh') format('truetype'),
+    url('#{$icomoon-font-path}/icon-scuf.woff?dmtxeh') format('woff'),
+    url('#{$icomoon-font-path}/icon-scuf.svg?dmtxeh#icon-scuf') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -41,63 +44,78 @@ $icon-valid: "\e90a";
   @return unquote("\"") + $str + unquote("\"");
 }
 
+.icon-info {
+  &:before {
+    content: unicode($icon-info); 
+  }
+}
+.icon-loading {
+  &:before {
+    content: unicode($icon-loading); 
+  }
+}
+.icon-tools {
+  &:before {
+    content: unicode($icon-tools); 
+  }
+}
 .icon-left-arrow {
   &:before {
-    content: unicode($icon-left-arrow);
+    content: unicode($icon-left-arrow); 
   }
 }
 .icon-calendar {
   &:before {
-    content: unicode($icon-calendar);
+    content: unicode($icon-calendar); 
   }
 }
 .icon-lock {
   &:before {
-    content: unicode($icon-lock);
+    content: unicode($icon-lock); 
   }
 }
 .icon-close {
   &:before {
-    content: unicode($icon-close);
+    content: unicode($icon-close); 
   }
 }
 .icon-flash {
   &:before {
-    content: unicode($icon-flash);
+    content: unicode($icon-flash); 
   }
 }
 .icon-list {
   &:before {
-    content: unicode($icon-list);
+    content: unicode($icon-list); 
   }
 }
 .icon-logout {
   &:before {
-    content: unicode($icon-logout);
+    content: unicode($icon-logout); 
   }
 }
 .icon-magnify {
   &:before {
-    content: unicode($icon-magnify);
+    content: unicode($icon-magnify); 
   }
 }
 .icon-notification {
   &:before {
-    content: unicode($icon-notification);
+    content: unicode($icon-notification); 
   }
 }
 .icon-profile {
   &:before {
-    content: unicode($icon-profile);
+    content: unicode($icon-profile); 
   }
 }
 .icon-right-arrow {
   &:before {
-    content: unicode($icon-right-arrow);
+    content: unicode($icon-right-arrow); 
   }
 }
 .icon-valid {
   &:before {
-    content: unicode($icon-valid);
+    content: unicode($icon-valid); 
   }
 }

@@ -27,7 +27,12 @@ calendar = {
     } else {
       userID = localStorage.getItem('userID');
       selectable = true;
-      editable = false;
+
+      if(ROLE == 4 || ROLE == 42) {
+        editable = true;
+      } else {
+        editable = false;
+      }
     }
     const el = $('#' + calendarID);
 
@@ -646,7 +651,7 @@ calendar = {
           $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
 
           // 4. Render new event on calendar
-          $('#calendar').fullCalendar('renderEvent', eventData, true);
+          $('#calendar').fullCalendar('renderEvent', eventData, false);
 
           // 5. Remove handlers event
           $('#calendar').fullCalendar('unselect');
