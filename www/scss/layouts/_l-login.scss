@@ -63,6 +63,7 @@
     @include center-h-v(absolute);
     width: 80%;
     margin-top: 55px;
+    z-index: 20;
 
     &__block {
       position: relative;
@@ -76,6 +77,10 @@
       font-weight: 500;
       font-size: 20px;
       color: color('foreground', 'invert');
+
+      &:focus {
+        background-color: color('background', 'invert');
+      }
     }
 
     &__label {

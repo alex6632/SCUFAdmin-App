@@ -7,10 +7,10 @@ var me = {
 
     if (isConnected) {
 
-      const authTokenID = localStorage.getItem('authTokenID'),
-        authTokenVALUE = localStorage.getItem('authTokenVALUE'),
-        userID = localStorage.getItem('userID'),
-        ROLE = localStorage.getItem('ROLE');
+      const authTokenID = window.localStorage.getItem('authTokenID'),
+        authTokenVALUE = window.localStorage.getItem('authTokenVALUE'),
+        userID = window.localStorage.getItem('userID'),
+        ROLE = window.localStorage.getItem('ROLE');
 
       page.getSetting('coeff', authTokenVALUE);
 
@@ -62,15 +62,17 @@ var me = {
 
   config: function () {
     // If ENV exist, remove it
-    if(localStorage.getItem('ENV') !== null) {
-      localStorage.removeItem('ENV');
+    if(window.localStorage.getItem('ENV') !== null) {
+      window.localStorage.removeItem('ENV');
     }
+    window.localStorage.setItem('ENV', 'http://api.scufrh.ovh');
+
     // Define new ENV
-    if (window.location.href.indexOf("localhost") > -1) {
-      localStorage.setItem('ENV', 'http://127.0.0.1:8000');
-    } else {
-      localStorage.setItem('ENV', 'http://api.scufrh.ovh');
-    }
+    // if (window.location.href.indexOf("localhost") > -1) {
+    //   window.localStorage.setItem('ENV', 'http://127.0.0.1:8000');
+    // } else {
+    //   window.localStorage.setItem('ENV', 'http://api.scufrh.ovh');
+    // }
   },
 
 };

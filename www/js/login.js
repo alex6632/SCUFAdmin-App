@@ -3,7 +3,7 @@
 */
 var login = {
   loginPage: function () {
-    if (localStorage.getItem('authTokenID') === null) {
+    if (window.localStorage.getItem('authTokenID') === null) {
       $('.loginTrigger').removeClass('hide');
       var loginHTMLPage = '' +
         '<div class="login">' +
@@ -45,8 +45,8 @@ var login = {
     } else {
       $('.loginTrigger .login').remove();
       $('.loginTrigger').addClass('hide');
-      const authTokenVALUE = localStorage.getItem('authTokenVALUE');
-      const userID = localStorage.getItem('userID');
+      const authTokenVALUE = window.localStorage.getItem('authTokenVALUE');
+      const userID = window.localStorage.getItem('userID');
       me.init();
     }
   },
@@ -55,22 +55,25 @@ var login = {
     $('.loginTrigger').on('submit', '.login__form', function (e) {
       e.preventDefault();
       $('#jsShowConnectForm').append('<div class="loader"><div class="loader__gif"></div></div>');
-      var api = localStorage.getItem('ENV') + "/auth-tokens";
+      var api = window.localStorage.getItem('ENV') + "/auth-tokens";
       $.ajax({
         url: api,
         data: $(this).serialize(),
         type: 'POST',
         success: function (response) {
           console.log(response);
-          location.reload();
+          
+          // App reload for prevent any bug caused by off activity
+          window.location.reload(true);
+
           $('#jsShowConnectForm .loader').remove();
           $('.msg-flash .alert').remove();
-          localStorage.setItem('authTokenID', response.authToken.id);
-          localStorage.setItem('authTokenVALUE', response.authToken.value);
-          localStorage.setItem('userID', response.authToken.user.id);
-          localStorage.setItem('ROLE', response.authToken.user.role);
-          localStorage.setItem('authTokenCREATED', response.createdTime);
-          localStorage.setItem('tokenValidityDuration', response.tokenValidityDuration);
+          window.localStorage.setItem('authTokenID', response.authToken.id);
+          window.localStorage.setItem('authTokenVALUE', response.authToken.value);
+          window.localStorage.setItem('userID', response.authToken.user.id);
+          window.localStorage.setItem('ROLE', response.authToken.user.role);
+          window.localStorage.setItem('authTokenCREATED', response.createdTime);
+          window.localStorage.setItem('tokenValidityDuration', response.tokenValidityDuration);
 
           login.loginPage();
         },

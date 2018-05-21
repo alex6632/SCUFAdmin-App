@@ -6,7 +6,7 @@ var page = {
    */
   profile: function (authTokenVALUE, userID) {
     $('#profile').append('<div class="loader"><div class="loader__gif"></div></div>');
-    var api = localStorage.getItem('ENV') + "/user/" + userID;
+    var api = window.localStorage.getItem('ENV') + "/user/" + userID;
     $.ajax({
       url: api,
       type: 'GET',
@@ -41,7 +41,7 @@ var page = {
 
         let percentageHoursTodo = response.user.hoursTodo == 0 ? (0).toFixed(2) : ((response.user.hoursDone / response.user.hoursTodo) * 100).toFixed(2);
         let percentageHoursPlanified = hoursToPlanify == 0 ? (0).toFixed(2) : ((response.user.hoursPlanifiedByMe / hoursToPlanify) * 100).toFixed(2);
-        let coeff = localStorage.getItem('settingCOEFF');
+        let coeff = window.localStorage.getItem('settingCOEFF');
         let restHours = Math.trunc(response.user.overtime * coeff);
         let restMinutes = Math.floor((response.user.overtime * coeff).toFixed(2) * 60) % 60;
         let rest = restHours == 0 ? restMinutes + '<span>MIN</span>' : restHours + '<span>H</span>' + restMinutes;
@@ -105,7 +105,7 @@ var page = {
       confirmPassword = $('#confirm_new_password').val();
 
       if (previousPassword.length != "" && plainPassword.length != "" && confirmPassword.length != "") {
-        var api = localStorage.getItem('ENV') + "/user/update/" + userID;
+        var api = window.localStorage.getItem('ENV') + "/user/update/" + userID;
         var data = {
           previous_password: previousPassword,
           plain_password: plainPassword,
@@ -172,7 +172,7 @@ var page = {
    * ------------------------
    */
   getSetting: function (element, authTokenVALUE) {
-    var api = localStorage.getItem('ENV') + "/setting/main/" + element;
+    var api = window.localStorage.getItem('ENV') + "/setting/main/" + element;
     $.ajax({
       url: api,
       type: 'GET',
@@ -180,7 +180,7 @@ var page = {
         xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
       },
       success: function (response) {
-        localStorage.setItem('settingCOEFF', response[0].value);
+        window.localStorage.setItem('settingCOEFF', response[0].value);
       },
       error: function (response) {
         console.log(response);
@@ -194,7 +194,7 @@ var page = {
    * -------------------------------
    */
   getEmployees: function (authTokenVALUE, userID, page) {
-    var api = localStorage.getItem('ENV') + "/users/" + userID;
+    var api = window.localStorage.getItem('ENV') + "/users/" + userID;
     $.ajax({
       url: api,
       type: 'GET',
@@ -230,7 +230,7 @@ var page = {
    */
   notifications: function (authTokenVALUE, userID) {
     $('#jsNotifications').append('<div class="loader"><div class="loader__gif"></div></div>');
-    var api = localStorage.getItem('ENV') + "/notifications/" + userID;
+    var api = window.localStorage.getItem('ENV') + "/notifications/" + userID;
     $.ajax({
       url: api,
       type: 'GET',
@@ -352,7 +352,7 @@ var page = {
    * ---------------------------
    */
   refreshNotifications: function (authTokenVALUE, userID) {
-    var api = localStorage.getItem('ENV') + "/notifications/count/" + userID;
+    var api = window.localStorage.getItem('ENV') + "/notifications/count/" + userID;
     $.ajax({
       url: api,
       type: 'GET',
@@ -386,7 +386,7 @@ var page = {
       let actionID = item.find('.notification-id').val();
 
       // 2. Update data into DB
-      var api = localStorage.getItem('ENV') + "/action/update/" + actionID;
+      var api = window.localStorage.getItem('ENV') + "/action/update/" + actionID;
       $.ajax({
         url: api,
         type: 'PATCH',
@@ -489,7 +489,7 @@ var page = {
     $('#validation').append('<div class="loader"><div class="loader__gif"></div></div>');
 
     // 2. Refresh list of days in progress
-    const api1 = localStorage.getItem('ENV') + '/events/in-progress/' + userID;
+    const api1 = window.localStorage.getItem('ENV') + '/events/in-progress/' + userID;
     $.ajax({
       url: api1,
       type: 'GET',
@@ -532,7 +532,7 @@ var page = {
     });
 
     // 4. Show tasks to validate
-    const api2 = localStorage.getItem('ENV') + '/user/' + userID + '/event/' + date;
+    const api2 = window.localStorage.getItem('ENV') + '/user/' + userID + '/event/' + date;
     $.ajax({
       url: api2,
       type: 'GET',
@@ -718,7 +718,7 @@ var page = {
       $(this).find('.jsValidationVvalue').val(jsValidationVvalue);
 
       if(!errors) {
-        const api = localStorage.getItem('ENV') + '/event/' + eventID + '/confirm';
+        const api = window.localStorage.getItem('ENV') + '/event/' + eventID + '/confirm';
         $.ajax({
           url: api,
           type: 'PATCH',

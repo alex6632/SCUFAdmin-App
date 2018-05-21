@@ -6,7 +6,7 @@ var logout = {
     $('.jsLogout').on('click', function () {
       if (confirm("Êtes vous certain de vouloir vous déconnecter ?")) {
         $('.routing.show').append('<div class="loader"><div class="loader__gif"></div></div>');
-        var api = localStorage.getItem('ENV') + "/auth-tokens/" + authTokenID;
+        var api = window.localStorage.getItem('ENV') + "/auth-tokens/" + authTokenID;
         $.ajax({
           url: api,
           type: 'DELETE',
@@ -14,17 +14,20 @@ var logout = {
             xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
           },
           success: function () {
-            location.reload();
-            document.location.href="/";
+            
+            // App reload to be sure that all env variables are cleaned
+            window.location.reload(true);
+
+            //document.location.href="/";
             //document.location.href="http://localhost/_SCUFAdmin/web/www/index.html";
             $('.routing.show .loader').remove();
-            localStorage.removeItem('authTokenID');
-            localStorage.removeItem('authTokenVALUE');
-            localStorage.removeItem('userID');
-            localStorage.removeItem('ROLE');
-            localStorage.removeItem('authTokenCREATED');
-            localStorage.removeItem('tokenValidityDuration');
-            localStorage.removeItem('settingCOEFF');
+            window.localStorage.removeItem('authTokenID');
+            window.localStorage.removeItem('authTokenVALUE');
+            window.localStorage.removeItem('userID');
+            window.localStorage.removeItem('ROLE');
+            window.localStorage.removeItem('authTokenCREATED');
+            window.localStorage.removeItem('tokenValidityDuration');
+            window.localStorage.removeItem('settingCOEFF');
             login.loginPage();
           },
           error: function (response) {

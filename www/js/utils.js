@@ -179,23 +179,23 @@ var utils = {
   isValidToken: function () {
     console.log('Check if token is valid....');
 
-    var authTokenCREATED = localStorage.getItem('authTokenCREATED'),
+    var authTokenCREATED = window.localStorage.getItem('authTokenCREATED'),
       isConnected = false;
 
     if (authTokenCREATED !== null) {
       var date = Math.trunc(Date.now() / 1000),
-        tokenValidityDuration = localStorage.getItem('tokenValidityDuration');
+        tokenValidityDuration = window.localStorage.getItem('tokenValidityDuration');
 
       if (date - authTokenCREATED < tokenValidityDuration) {
         console.log('....token OK :-)');
         isConnected = true;
       } else {
         console.log('....token expired, please login again :-)');
-        localStorage.removeItem('authTokenID');
-        localStorage.removeItem('authTokenVALUE');
-        localStorage.removeItem('userID');
-        localStorage.removeItem('authTokenCREATED');
-        localStorage.removeItem('tokenValidityDuration');
+        window.localStorage.removeItem('authTokenID');
+        window.localStorage.removeItem('authTokenVALUE');
+        window.localStorage.removeItem('userID');
+        window.localStorage.removeItem('authTokenCREATED');
+        window.localStorage.removeItem('tokenValidityDuration');
         login.loginPage();
       }
     }
@@ -203,7 +203,7 @@ var utils = {
   },
 
   ajaxGet: function (element, type, authTokenVALUE) {
-    var api = localStorage.getItem('ENV') + "/" + element;
+    var api = window.localStorage.getItem('ENV') + "/" + element;
     $.ajax({
       url: api,
       type: 'GET',
@@ -371,7 +371,7 @@ var utils = {
    */
   ajaxGetUsers: function (authTokenVALUE) {
     $.ajax({
-      url: localStorage.getItem('ENV') + '/users',
+      url: window.localStorage.getItem('ENV') + '/users',
       type: 'GET',
       beforeSend: function (xhr) {
         xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
@@ -382,7 +382,7 @@ var utils = {
           $('.jsUsersList').append('<option value="' + response[i].id + '">' + response[i].firstname + ' ' + response[i].lastname + '</option>');
         }
         let selectUserID = $('.jsUsersList').val();
-        crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+        crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
       },
       error: function (err) {
         console.log(err);
@@ -396,7 +396,7 @@ var utils = {
   ajaxGetWeeksType: function (authTokenVALUE) {
     // TODO: Add loader here and remove it on ajaxSimplePage just before re append it for list loading
     $.ajax({
-      url: localStorage.getItem('ENV') + '/setting/week',
+      url: window.localStorage.getItem('ENV') + '/setting/week',
       type: 'GET',
       beforeSend: function (xhr) {
         xhr.setRequestHeader('X-Auth-Token', authTokenVALUE);
@@ -422,7 +422,7 @@ var utils = {
       const selected = $(this).find('option:selected').val();
       $('.jsUsersList option[value="' + selected + '"]').prop('selected', true);
       selectUserID = $(this).val();
-      crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+      crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
       console.log("Change for user " + selectUserID);
     });
   },

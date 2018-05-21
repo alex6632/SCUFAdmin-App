@@ -25,7 +25,7 @@ calendar = {
       });
 
     } else {
-      userID = localStorage.getItem('userID');
+      userID = window.localStorage.getItem('userID');
       selectable = true;
 
       if(ROLE == 4 || ROLE == 42) {
@@ -80,7 +80,7 @@ calendar = {
        * -------------------
        */
       events: function (start, end, timezone, callback) {
-        var api = localStorage.getItem('ENV') + "/events/" + userID;
+        var api = window.localStorage.getItem('ENV') + "/events/" + userID;
         $.ajax({
           url: api,
           type: 'GET',
@@ -119,7 +119,7 @@ calendar = {
         event.end = updatedEnd;
 
         // 3. Save data into DB
-        var api = localStorage.getItem('ENV') + "/event/update/" + event.id;
+        var api = window.localStorage.getItem('ENV') + "/event/update/" + event.id;
         $.ajax({
           url: api,
           type: 'PATCH',
@@ -165,7 +165,7 @@ calendar = {
         event.end = updatedEnd;
 
         // 3. Save data into DB
-        var api = localStorage.getItem('ENV') + "/event/update/" + event.id;
+        var api = window.localStorage.getItem('ENV') + "/event/update/" + event.id;
         $.ajax({
           url: api,
           type: 'PATCH',
@@ -281,7 +281,7 @@ calendar = {
             $(this).parents('.calendar-modale').remove();
 
             // 3. Delete data into DB
-            var api = localStorage.getItem('ENV') + "/event/delete/" + event.id;
+            var api = window.localStorage.getItem('ENV') + "/event/delete/" + event.id;
             $.ajax({
               url: api,
               type: 'DELETE',
@@ -343,7 +343,7 @@ calendar = {
             $(this).parents('.calendar-modale').remove();
 
             // 5. Save data into DB
-            var api = localStorage.getItem('ENV') + "/event/update/" + event.id;
+            var api = window.localStorage.getItem('ENV') + "/event/update/" + event.id;
             $.ajax({
               url: api,
               type: 'PATCH',
@@ -476,7 +476,7 @@ calendar = {
             };
 
             // 5. Save data into DB
-            var api = localStorage.getItem('ENV') + "/event/create/" + userID;
+            var api = window.localStorage.getItem('ENV') + "/event/create/" + userID;
             $.ajax({
               url: api,
               type: 'POST',
@@ -532,7 +532,7 @@ calendar = {
       } else {
         utils.removeEventHandlers('level2Edit');
       }
-      userID = localStorage.getItem('userID');
+      userID = window.localStorage.getItem('userID');
       calendar.init(authTokenVALUE, userID, calendarID);
       el.fullCalendar('refetchEvents');
       el.fullCalendar('refetchEventSources');
@@ -584,21 +584,21 @@ calendar = {
           eventBorder = '#1e1e1e';
           eventTitle = item.find('.notification-justification').val();
           eventLocation = item.find('.notification-location').val();
-          api = localStorage.getItem('ENV') + "/event/createFromNotification/" + userConnectedID + "/" + actionID;
+          api = window.localStorage.getItem('ENV') + "/event/createFromNotification/" + userConnectedID + "/" + actionID;
           break;
         case 'leave':
           eventBg = '#b0b0b0';
           eventBorder = '#b0b0b0';
           eventTitle = 'Congés';
           eventLocation = 'Aucun';
-          api = localStorage.getItem('ENV') + "/event/createFromNotification/" + userNotificationID + "/" + actionID;
+          api = window.localStorage.getItem('ENV') + "/event/createFromNotification/" + userNotificationID + "/" + actionID;
           break;
         case 'rest':
           eventBg = '#b0b0b0';
           eventBorder = '#b0b0b0';
           eventTitle = 'Repos';
           eventLocation = 'Aucun';
-          api = localStorage.getItem('ENV') + "/event/createFromNotification/" + userNotificationID + "/" + actionID;
+          api = window.localStorage.getItem('ENV') + "/event/createFromNotification/" + userNotificationID + "/" + actionID;
           break;
       }
 

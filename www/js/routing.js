@@ -9,7 +9,7 @@ var routing = {
   level1: function (element, authTokenVALUE, ROLE) {
     $('.' + element).on('click', function () {
       if (utils.isValidToken()) {
-        var userID = localStorage.getItem('userID');
+        var userID = window.localStorage.getItem('userID');
         
         // Tab bar
         $('.tab-bar__item').removeClass('current');
@@ -79,14 +79,14 @@ var routing = {
       switch (element) {
         case "rest":
           jsGoLevel1.attr('data-id', 'level2Rest');
-          crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
+          crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
           crud.ajaxAddAction('rest', authTokenVALUE, userID);
           crud.ajaxRemove('.rest-list', '.rest-list #deleteRest', 'action', authTokenVALUE, 'rest');
           content = 'Repos';
           break;
         case "leave":
           jsGoLevel1.attr('data-id', 'level2Leave');
-          crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
+          crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
           crud.ajaxAddAction('leave', authTokenVALUE, userID);
           crud.ajaxRemove('.leave-list', '.leave-list #deleteLeave', 'action', authTokenVALUE, 'leave');
           content = 'Congés';
@@ -94,7 +94,7 @@ var routing = {
         case "hours":
           jsGoLevel1.attr('data-id', 'level2Hours');
           page.getEmployees(authTokenVALUE, userID, 'hours');
-          crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
+          crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
           crud.ajaxAddAction('hours', authTokenVALUE, userID);
           crud.ajaxRemove('.hours-list', '.hours-list #deleteHours', 'action', authTokenVALUE, 'hours');
           content = 'H. supp.';

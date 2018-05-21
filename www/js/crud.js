@@ -7,7 +7,7 @@ var crud = {
       e.preventDefault();
       $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
       $('form.' + element + ' button').prop("disabled", true);
-      var api = localStorage.getItem('ENV') + "/" + type + "/create";
+      var api = window.localStorage.getItem('ENV') + "/" + type + "/create";
       $.ajax({
         url: api,
         type: 'POST',
@@ -24,7 +24,7 @@ var crud = {
                 $('form.' + element + ' button').prop("disabled", true);
                 $('.msg-flash .alert').remove();
                 $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/access', $('.access-list'), 'access', authTokenVALUE);
+                crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/access', $('.access-list'), 'access', authTokenVALUE);
                 utils.emptyForm('access');
               } else {
                 console.log(response);
@@ -37,7 +37,7 @@ var crud = {
               $('form.' + element + ' button').prop("disabled", true);
               $('.msg-flash .alert').remove();
               $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-              crud.ajaxSimpleList(localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
+              crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
               utils.emptyForm('user');
               // Close form
               $('#jsCloseFormAddUser').removeClass('show');
@@ -49,7 +49,7 @@ var crud = {
               utils.removeHTML("level2Section");
               $('.msg-flash .alert').remove();
               $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-              crud.ajaxSimpleList(localStorage.getItem('ENV') + '/sections', $('.section-list'), 'section', authTokenVALUE);
+              crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/sections', $('.section-list'), 'section', authTokenVALUE);
               utils.emptyForm('section');
               break;
           }
@@ -261,7 +261,7 @@ var crud = {
       var idStr = $(this).attr('id');
       var reg = /([0-9]+)/.exec(idStr);
       var id = RegExp.$1;
-      var api = localStorage.getItem('ENV') + "/" + type + "/update/" + id;
+      var api = window.localStorage.getItem('ENV') + "/" + type + "/update/" + id;
       var value = '';
       var data = {};
       if (type == 'access') {
@@ -364,10 +364,10 @@ var crud = {
       $(this).parent().find('.delete').removeClass('hide');
       if(type == 'user') {
         utils.removeHTML("level2User");
-        crud.ajaxSimpleList(localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
+        crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
       } else {
         utils.removeHTML("level2Week");
-        crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+        crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
       }
     });
     $(element).on('click', 'form .edit', function () {
@@ -375,7 +375,7 @@ var crud = {
       var idStr = $(this).attr('id');
       var reg = /([0-9]+)/.exec(idStr);
       var id = RegExp.$1;
-      var api = localStorage.getItem('ENV') + "/" + type + "/update/" + id;
+      var api = window.localStorage.getItem('ENV') + "/" + type + "/update/" + id;
       form = $(this).parents('form');
       console.log(form);
       $.ajax({
@@ -393,14 +393,14 @@ var crud = {
                 utils.removeHTML("level2User");
                 $('.msg-flash .alert').remove();
                 $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
+                crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/users', $('.user-list tbody'), 'user', authTokenVALUE, ROLE);
                 break;
               case "week":
                 utils.removeHTML("level2Week");
                 $('.msg-flash .alert').remove();
                 $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
                 const selectUserID = $('.jsUsersList').val();
-                crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+                crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
                 break;
             }
           } else {
@@ -428,7 +428,7 @@ var crud = {
         var idStr = $(this).attr('id');
         var reg = /([0-9]+)/.exec(idStr);
         var id = RegExp.$1;
-        var api = localStorage.getItem('ENV') + "/" + type + "/delete/" + id;
+        var api = window.localStorage.getItem('ENV') + "/" + type + "/delete/" + id;
         $.ajax({
           url: api,
           type: 'DELETE',
@@ -571,7 +571,7 @@ var crud = {
 
       if (!error) {
         $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
-        const api = localStorage.getItem('ENV') + "/action/create/" + type + "/" + userID;
+        const api = window.localStorage.getItem('ENV') + "/action/create/" + type + "/" + userID;
         $.ajax({
           url: api,
           type: 'POST',
@@ -587,21 +587,21 @@ var crud = {
                   utils.removeHTML("level2Leave");
                   $('.msg-flash .alert').remove();
                   $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
+                  crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/leave/' + userID, $('.leave-list tbody'), 'leave', authTokenVALUE);
                   utils.emptyForm('leave');
                   break;
                 case "rest":
                   utils.removeHTML("level2Rest");
                   $('.msg-flash .alert').remove();
                   $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
+                  crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/rest/' + userID, $('.rest-list tbody'), 'rest', authTokenVALUE);
                   utils.emptyForm('rest');
                   break;
                 case "hours":
                   utils.removeHTML("level2Hours");
                   $('.msg-flash .alert').remove();
                   $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
-                  crud.ajaxSimpleList(localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
+                  crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/actions/hours/' + userID, $('.hours-list tbody'), 'hours', authTokenVALUE);
                   utils.emptyForm('hours');
                   break;
               }
@@ -627,7 +627,7 @@ var crud = {
     $('.jsFormAddWeek').on('submit', function (e) {
       e.preventDefault();
       $('#actions').append('<div class="loader"><div class="loader__gif"></div></div>');
-      const api = localStorage.getItem('ENV') + "/week/create";
+      const api = window.localStorage.getItem('ENV') + "/week/create";
       $.ajax({
         url: api,
         type: 'POST',
@@ -642,7 +642,7 @@ var crud = {
           $('.msg-flash .alert').remove();
           $('.msg-flash').append('<div class="alert alert--success" role="alert">' + response.message + '</div>');
           const selectUserID = $('.jsUsersList').val();
-          crud.ajaxSimpleList(localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
+          crud.ajaxSimpleList(window.localStorage.getItem('ENV') + '/weeks/' + selectUserID, $('.week-list tbody'), 'week', authTokenVALUE);
           utils.emptyForm('hours');
         },
         error: function (err) {
