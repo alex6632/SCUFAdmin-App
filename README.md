@@ -40,6 +40,6 @@ yourProject/platforms/android/app/build/outputs/apk/debug/yourName-debug.apk
 
 4/ Drag & drop this file in your Android phone and execute it
 
-Emule & build (Android)
+Emule & build (iOS)
 -------
 As soon as possible...
